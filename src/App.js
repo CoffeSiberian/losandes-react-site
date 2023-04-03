@@ -1,10 +1,13 @@
 import RoutePage from "./routes/Routes";
+import Header from "./components/Header";
+import DarkMode from "./hooks/contex/DarkModeContex";
 
 function App() {
   return (
-    <div>
+    <DarkMode>
+      <Header />
       <RoutePage />
-    </div>
+    </DarkMode>
   );
 }
 
