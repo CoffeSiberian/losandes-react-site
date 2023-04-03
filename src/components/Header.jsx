@@ -27,6 +27,13 @@ const Header = () => {
     return (
         <nav>
             <AppBar position="static">
+                <div className="flex absolute justify-center top-0 w-full">
+                    <img
+                        className="w-3/12 md:w-1/12"
+                        src={logo}
+                        alt="Los Andes VTC logo"
+                    />
+                </div>
                 <MovileHeaderOptions open={menuOpen} setOpen={setMenuOpen} />
                 <Toolbar disableGutters>
                     <div className="flex md:hidden">
@@ -45,100 +52,87 @@ const Header = () => {
                             flexItem
                         />
                     </div>
-                        <div className="md:flex ml-5 hidden justify-start w-full">
-                            <Button
-                                startIcon={<HomeRoundedIcon />}
-                                color="inherit"
-                            >
-                                Inicio
-                            </Button>
-                            <Divider
-                                sx={{ mr: 1 }}
-                                orientation="vertical"
-                                variant="middle"
-                                flexItem
-                            />
-                            <Button
-                                startIcon={<EventAvailableRoundedIcon />}
-                                color="inherit"
-                            >
-                                Eventos
-                            </Button>
-                            <Divider
-                                sx={{ mr: 1 }}
-                                orientation="vertical"
-                                variant="middle"
-                                flexItem
-                            />
-                            <Button
-                                startIcon={<NewspaperRoundedIcon />}
-                                color="inherit"
-                            >
-                                Noticias
-                            </Button>
-                            <Divider
-                                sx={{ mr: 1 }}
-                                orientation="vertical"
-                                variant="middle"
-                                flexItem
-                            />
-                            <Button
-                                startIcon={<HandshakeRoundedIcon />}
-                                color="inherit"
-                            >
-                                Partners
-                            </Button>
-                        </div>
-                        <div className="flex absolute justify-center top-0 w-full">
-                            <img
-                                className="w-3/12 md:w-1/12"
-                                src={logo}
-                                alt="Los Andes VTC logo"
-                            />
-                        </div>
-                        <div className="md:flex hidden justify-end w-full">
-                            <Button
-                                startIcon={<BadgeRoundedIcon />}
-                                color="inherit"
-                            >
-                                Staff
-                            </Button>
-                            <Divider
-                                sx={{ mr: 1 }}
-                                orientation="vertical"
-                                variant="middle"
-                                flexItem
-                            />
-                            <Button
-                                startIcon={<InfoRoundedIcon />}
-                                color="inherit"
-                            >
-                                Sobre nosotros
-                            </Button>
-                            <Divider
-                                sx={{ mr: 1 }}
-                                orientation="vertical"
-                                variant="middle"
-                                flexItem
-                            />
-                            <Button
-                                startIcon={<AlternateEmailRoundedIcon />}
-                                color="inherit"
-                            >
-                                Contacto
-                            </Button>
-                            <Divider
-                                sx={{ mr: 1 }}
-                                orientation="vertical"
-                                variant="middle"
-                                flexItem
-                            />
-                        </div>
-                        <div className="flex w-full mr-5 justify-end md:w-auto">
-                            <IconButton onClick={() => setDarkMode(!darkMode)}>
-                                <Brightness4RoundedIcon />
-                            </IconButton>
-                        </div>
+                    <div className="md:flex ml-5 hidden justify-start w-full">
+                        <Button startIcon={<HomeRoundedIcon />} color="inherit">
+                            Inicio
+                        </Button>
+                        <Divider
+                            sx={{ mr: 1 }}
+                            orientation="vertical"
+                            variant="middle"
+                            flexItem
+                        />
+                        <Button
+                            startIcon={<EventAvailableRoundedIcon />}
+                            color="inherit"
+                        >
+                            Eventos
+                        </Button>
+                        <Divider
+                            sx={{ mr: 1 }}
+                            orientation="vertical"
+                            variant="middle"
+                            flexItem
+                        />
+                        <Button
+                            startIcon={<NewspaperRoundedIcon />}
+                            color="inherit"
+                        >
+                            Noticias
+                        </Button>
+                        <Divider
+                            sx={{ mr: 1 }}
+                            orientation="vertical"
+                            variant="middle"
+                            flexItem
+                        />
+                        <Button
+                            startIcon={<HandshakeRoundedIcon />}
+                            color="inherit"
+                        >
+                            Partners
+                        </Button>
+                    </div>
+                    <div className="md:flex hidden justify-end w-full">
+                        <Button
+                            startIcon={<BadgeRoundedIcon />}
+                            color="inherit"
+                        >
+                            Staff
+                        </Button>
+                        <Divider
+                            sx={{ mr: 1 }}
+                            orientation="vertical"
+                            variant="middle"
+                            flexItem
+                        />
+                        <Button startIcon={<InfoRoundedIcon />} color="inherit">
+                            Sobre nosotros
+                        </Button>
+                        <Divider
+                            sx={{ mr: 1 }}
+                            orientation="vertical"
+                            variant="middle"
+                            flexItem
+                        />
+                        <Button
+                            startIcon={<AlternateEmailRoundedIcon />}
+                            color="inherit"
+                        >
+                            Contacto
+                        </Button>
+                        <Divider
+                            sx={{ mr: 1 }}
+                            orientation="vertical"
+                            variant="middle"
+                            flexItem
+                        />
+                    </div>
+                    <div className="flex w-full mr-5 justify-end md:w-auto">
+                        <IconButton onClick={() => setDarkMode(!darkMode)}>
+                            <Brightness4RoundedIcon />
+                        </IconButton>
+                    </div>
                 </Toolbar>
             </AppBar>
         </nav>
