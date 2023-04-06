@@ -7,6 +7,9 @@ import Partners from "./pages/Partners";
 import Staff from "./pages/Staff";
 import Aboutus from "./pages/Aboutus";
 import Contact from "./pages/Contact";
+import Apply from "./pages/Apply";
+import HallOfFame from "./pages/HallOfFame";
+import Employees from "./pages/Employees";
 import Notfound from "./pages/Notfound";
 
 const RoutePage = () => {
@@ -73,6 +76,33 @@ const RoutePage = () => {
                         <>
                             <Header />
                             <Contact />
+                        </>
+                    }
+                />
+                <Route
+                    path="/apply"
+                    element={
+                        <>
+                            <Header />
+                            <Apply />
+                        </>
+                    }
+                />
+                <Route
+                    path="/hall-of-fame"
+                    element={
+                        <>
+                            <Header />
+                            <HallOfFame />
+                        </>
+                    }
+                />
+                <Route
+                    path="/employees"
+                    element={
+                        <>
+                            <Header />
+                            <Employees />
                         </>
                     }
                 />
