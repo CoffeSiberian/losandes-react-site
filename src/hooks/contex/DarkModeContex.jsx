@@ -14,7 +14,7 @@ const DarkMode = ({ children }) => {
         palette: {
             mode: "dark",
             primary: {
-                main: "#7D7D7D",
+                main: "#272727",
             },
         },
     };
@@ -24,6 +24,7 @@ const DarkMode = ({ children }) => {
             mode: "light",
             primary: {
                 main: "#3ca9d0",
+                secondary: "#ed9427",
             },
         },
     };
