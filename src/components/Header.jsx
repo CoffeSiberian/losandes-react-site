@@ -100,7 +100,7 @@ const Header = () => {
     };
 
     return (
-        <nav>
+        <nav className="mb-24">
             <AppBar position="static">
                 <div className="flex absolute justify-center top-3 w-full">
                     <img

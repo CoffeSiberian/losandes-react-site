@@ -74,16 +74,13 @@ const Footer = () => {
                             <li className="mr-3 ml-3" key={obj.name}>
                                 <Link
                                     className="flex justify-start md:justify-center items-center p-2"
-                                    color="white"
+                                    color={darkMode ? "white" : "black"}
                                     href={obj.link}
                                     target="_blank"
                                     underline="none"
                                 >
                                     {obj.logo}
-                                    <Typography
-                                        color="white"
-                                        variant="subtitle2"
-                                    >
+                                    <Typography variant="subtitle2">
                                         {obj.name}
                                     </Typography>
                                 </Link>
@@ -94,12 +91,12 @@ const Footer = () => {
                 <div className="flex justify-center mb-2">
                     <Link
                         className="flex justify-center items-center p-2"
-                        color="black"
+                        color={darkMode ? "white" : "black"}
                         href="https://github.com/CoffeSiberian"
                         target="_blank"
                         underline="none"
                     >
-                        <Typography variant="caption" color="black">
+                        <Typography variant="caption">
                             by: SiberianCoffe
                         </Typography>
                         <GitHubIcon />
