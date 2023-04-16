@@ -10,30 +10,57 @@ export const useDarkMode = () => {
 const DarkMode = ({ children }) => {
     const [darkMode, setDarkMode] = useState(false);
 
-    const dark = {
+    const darkMaterial = {
         palette: {
             mode: "dark",
             primary: {
-                main: "#171717",
+                main: "#404040",
+            },
+            secundary: {
+                main: "#606060",
             },
         },
     };
 
-    const light = {
+    const lightMaterial = {
         palette: {
             mode: "light",
             primary: {
                 main: "#3ca9d0",
-                secondary: "#ed9427",
+            },
+            secundary: {
+                main: "#ed9427",
             },
         },
     };
 
-    const darkThemeMaterial = createTheme(darkMode ? dark : light);
+    const darkTailwind = {
+        primary: {
+            main: "bg-neutral-900",
+        },
+        secundary: {
+            main: "bg-stone-800",
+        },
+    };
+
+    const lightTailwind = {
+        primary: {
+            main: "bg-white",
+        },
+        secundary: {
+            main: "bg-gray-200",
+        },
+    };
+
+    const themeMaterial = createTheme(darkMode ? darkMaterial : lightMaterial);
+
+    const themeTatailwind = darkMode ? darkTailwind : lightTailwind;
 
     return (
-        <DarkModeContex.Provider value={{ darkMode, setDarkMode }}>
-            <ThemeProvider theme={darkThemeMaterial}>{children}</ThemeProvider>
+        <DarkModeContex.Provider
+            value={{ darkMode, themeTatailwind, setDarkMode }}
+        >
+            <ThemeProvider theme={themeMaterial}>{children}</ThemeProvider>
         </DarkModeContex.Provider>
     );
 };

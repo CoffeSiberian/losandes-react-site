@@ -15,19 +15,19 @@ const EventCard = ({
     atendenceVtc,
     url,
 }) => {
-    const { darkMode } = useDarkMode();
+    const { darkMode, themeTatailwind } = useDarkMode();
     const color = darkMode ? "white" : "black";
 
     return (
         <div
-            className={`flex flex-col rounded-lg border-2 border-transparent hover:border-[#3ca9d0] shadow-2xl m-4 mb-12 p-4"`}
+            className={`flex flex-col ${themeTatailwind.secundary.main} rounded-lg border-2 border-transparent hover:border-[#3ca9d0] shadow-2xl m-4 mb-12 p-4`}
         >
             <img
                 className="object-cover rounded-lg drop-shadow-lg"
                 src={img}
                 alt="Los Andes VTC logo"
             />
-            <div className="grid p-3">
+            <div className="flex flex-col pb-2">
                 <Link
                     className="flex justify-center p-2"
                     href={url}
@@ -38,7 +38,7 @@ const EventCard = ({
                     <Typography variant="h6">{name}</Typography>
                 </Link>
                 <Divider />
-                <Typography color={color} variant="body1">
+                <Typography className="pt-2" color={color} variant="body1">
                     <b>Fecha:</b> {date}
                     <br />
                     <b>Juego:</b> {game}
@@ -47,25 +47,26 @@ const EventCard = ({
                 </Typography>
                 <Typography
                     color={color}
-                    className="flex justify-center"
+                    className="flex justify-center pb-2"
                     variant="h6"
                 >
                     Asistencia
                 </Typography>
                 <Divider />
-                <Typography color={color} variant="body1">
+                <Typography className="pb-2" color={color} variant="body1">
                     <b>Jugadores:</b> {atendence}
                     <br />
                     <b>VTC's:</b> {atendenceVtc}
                 </Typography>
-
+            </div>
+            <div className="grid content-end h-full">
                 <Button
                     variant="contained"
                     endIcon={<OpenInNewRoundedIcon />}
                     href={url}
                     target="_blank"
                 >
-                    Mas Informacion
+                    Más información
                 </Button>
             </div>
         </div>

@@ -51,8 +51,8 @@ const Footer = () => {
                 elevation={24}
                 sx={{
                     backgroundColor: darkMode
-                        ? "primary.dark"
-                        : "primary.secondary",
+                        ? "primary.main"
+                        : "secundary.main",
                 }}
             >
                 <div className="flex justify-center p-2 drop-shadow-md">

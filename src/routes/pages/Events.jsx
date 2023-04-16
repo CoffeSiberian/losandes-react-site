@@ -2,7 +2,6 @@ import { Typography } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
 import EventCard from "../../components/EventCard";
 import useFetch from "../../hooks/useFetch";
-import { useDarkMode } from "../../hooks/contex/DarkModeContex";
 
 import {
     PROXY_CORS_URL_GET,
@@ -13,7 +12,6 @@ import {
 const Events = () => {
     const loaded = useRef(false);
     const [Events, setEvents] = useState(false);
-    const { darkMode } = useDarkMode();
 
     // eslint-disable-next-line
     const [loading, error, succes, bodyResponse] = useFetch(
@@ -66,11 +64,7 @@ const Events = () => {
     };
 
     return (
-        <div
-            className={`grid md:grid-cols-3 ${
-                darkMode ? "bg-neutral-900" : "bg-white"
-            }`}
-        >
+        <div className="grid md:grid-cols-3">
             {loading && <Typography variant="h4">Loading...</Typography>}
             {!error && !loading ? renderEvents() : <></>}
         </div>
