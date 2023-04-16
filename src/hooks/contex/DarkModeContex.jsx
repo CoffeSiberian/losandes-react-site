@@ -14,7 +14,7 @@ const DarkMode = ({ children }) => {
         palette: {
             mode: "dark",
             primary: {
-                main: "#212121",
+                main: "#171717",
             },
         },
     };
@@ -29,11 +29,11 @@ const DarkMode = ({ children }) => {
         },
     };
 
-    const darkTheme = createTheme(darkMode ? dark : light);
+    const darkThemeMaterial = createTheme(darkMode ? dark : light);
 
     return (
         <DarkModeContex.Provider value={{ darkMode, setDarkMode }}>
-            <ThemeProvider theme={darkTheme}>{children}</ThemeProvider>
+            <ThemeProvider theme={darkThemeMaterial}>{children}</ThemeProvider>
         </DarkModeContex.Provider>
     );
 };
