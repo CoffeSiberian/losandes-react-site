@@ -1,10 +1,9 @@
-const dataFetch = async (body = null, method, headers, url) => {
+const dataFetch = async (body, method, headers, url) => {
 	let optiosFetch = {
 		method: method,
 		headers: headers,
 		body: body,
 	};
-
 	try {
 		return await fetch(url, optiosFetch);
 	} catch (err) {
