@@ -11,7 +11,7 @@ import logo from "../static/img/logo.png";
 import GitHubIcon from "@mui/icons-material/GitHub";
 
 const Footer = () => {
-    const { darkMode } = useDarkMode();
+    const { darkMode, themeTatailwind } = useDarkMode();
     const social = [
         {
             name: "Instagram",
@@ -51,7 +51,7 @@ const Footer = () => {
                 elevation={24}
                 sx={{
                     backgroundColor: darkMode
-                        ? "primary.main"
+                        ? themeTatailwind.secundary.main
                         : "secundary.main",
                 }}
             >

@@ -48,7 +48,7 @@ const DarkMode = ({ children }) => {
             main: "bg-white",
         },
         secundary: {
-            main: "bg-gray-200",
+            main: "bg-gray-300",
         },
     };
 

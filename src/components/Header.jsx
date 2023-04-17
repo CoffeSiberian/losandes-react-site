@@ -100,8 +100,12 @@ const Header = () => {
     };
 
     return (
-        <nav className={`pb-24 ${darkMode ? "bg-neutral-900" : "bg-white"}`}>
-            <AppBar position="static">
+        <nav
+            className={`pb-40 sm:pb-48 md:pb-32 ${
+                darkMode ? "bg-neutral-900" : "bg-white"
+            }`}
+        >
+            <AppBar position="fixed">
                 <div className="flex absolute justify-center top-3 w-full">
                     <img
                         className="drop-shadow-2xl w-3/12 md:w-1/12"
