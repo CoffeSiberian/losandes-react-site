@@ -4,6 +4,17 @@ import { useDarkMode } from "../hooks/contex/DarkModeContex";
 import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
 import OpenInNewRoundedIcon from "@mui/icons-material/OpenInNewRounded";
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
+import timezone from "dayjs/plugin/timezone";
+
+// icons
+import SportsEsportsRoundedIcon from "@mui/icons-material/SportsEsportsRounded";
+import CalendarMonthRoundedIcon from "@mui/icons-material/CalendarMonthRounded";
+import StorageRoundedIcon from "@mui/icons-material/StorageRounded";
+import PeopleRoundedIcon from "@mui/icons-material/PeopleRounded";
+import LocalShippingRoundedIcon from "@mui/icons-material/LocalShippingRounded";
+//
 
 const EventCard = ({
     img,
@@ -17,6 +28,15 @@ const EventCard = ({
 }) => {
     const { darkMode, themeTatailwind } = useDarkMode();
     const color = darkMode ? "white" : "black";
+
+    const formatDate = (date) => {
+        dayjs.extend(utc);
+        dayjs.extend(timezone);
+        return dayjs
+            .tz(date, "UTC")
+            .tz(dayjs.tz.guess())
+            .format("DD/MMMM/YYYY HH:mm");
+    };
 
     return (
         <div
@@ -39,24 +59,41 @@ const EventCard = ({
                 </Link>
                 <Divider />
                 <Typography className="pt-2" color={color} variant="body1">
-                    <b>Fecha:</b> {date}
-                    <br />
-                    <b>Juego:</b> {game}
-                    <br />
-                    <b>Server:</b> {server}
+                    <div className="flex">
+                        <CalendarMonthRoundedIcon className="mr-2" />
+                        <div>
+                            <b className="mr-2">Fecha:</b>
+                            {formatDate(date)}
+                        </div>
+                    </div>
+                    <div className="flex">
+                        <SportsEsportsRoundedIcon className="mr-2" />
+                        <b className="mr-2">Juego:</b>
+                        {game}
+                    </div>
+                    <div className="flex">
+                        <StorageRoundedIcon className="mr-2" />
+                        <b className="mr-2">Server:</b>
+                        {server}
+                    </div>
                 </Typography>
                 <Typography
                     color={color}
-                    className="flex justify-center pb-2"
+                    className="flex justify-center pb-2 pt-2"
                     variant="h6"
                 >
                     Asistencia
                 </Typography>
                 <Divider />
-                <Typography className="pb-2" color={color} variant="body1">
-                    <b>Jugadores:</b> {atendence}
-                    <br />
-                    <b>VTC's:</b> {atendenceVtc}
+                <Typography className="pt-2" color={color} variant="body1">
+                    <div className="flex">
+                        <PeopleRoundedIcon className="mr-2" />
+                        <b className="mr-2">Jugadores:</b> {atendence}
+                    </div>
+                    <div className="flex">
+                        <LocalShippingRoundedIcon className="mr-2" />
+                        <b className="mr-2">VTC's:</b> {atendenceVtc}
+                    </div>
                 </Typography>
             </div>
             <div className="grid content-end h-full">

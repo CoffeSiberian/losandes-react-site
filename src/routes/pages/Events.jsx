@@ -11,7 +11,8 @@ import {
 
 const Events = () => {
     const loaded = useRef(false);
-    const [Events, setEvents] = useState(false);
+    const EventsResponse = useRef(false);
+    const [FilterEvents, setFilterEvents] = useState(false);
 
     // eslint-disable-next-line
     const [loading, error, succes, bodyResponse] = useFetch(
@@ -31,20 +32,42 @@ const Events = () => {
         };
         let fetchResponse = await bodyResponse(bodyQuery);
         if (fetchResponse.status === 200) {
-            return setEvents(await fetchResponse.json());
+            EventsResponse.current = await fetchResponse.json();
+            orderEvents();
+            return true;
         }
-        return setEvents(false);
+        return false;
+    };
+
+    const orderEvents = () => {
+        if (EventsResponse.current) {
+            let eventsList = JSON.parse(
+                JSON.stringify(EventsResponse.current.response)
+            );
+            let empyEvents = [];
+            eventsList.map((event) => {
+                if (new Date() < new Date(event.start_at)) {
+                    empyEvents.push(event);
+                }
+                return event;
+            });
+            empyEvents.sort((a, b) => {
+                return new Date(a.start_at) - new Date(b.start_at);
+            });
+            setFilterEvents(empyEvents);
+        }
     };
 
     useEffect(() => {
         if (!loaded.current) {
             getEvents();
+            loaded.current = true;
         } // eslint-disable-next-line
     }, []);
 
     const renderEvents = () => {
-        if (Events) {
-            return Events.response.map((event) => {
+        if (FilterEvents && FilterEvents.length > 0) {
+            return FilterEvents.map((event) => {
                 return (
                     <EventCard
                         key={event.id}
@@ -60,7 +83,7 @@ const Events = () => {
                 );
             });
         }
-        return <p>no events</p>;
+        return <Typography>No hay eventos próximos</Typography>;
     };
 
     return (
