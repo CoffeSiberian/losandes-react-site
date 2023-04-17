@@ -58,7 +58,12 @@ const EventCard = ({
                     <Typography variant="h6">{name}</Typography>
                 </Link>
                 <Divider />
-                <Typography className="pt-2" color={color} variant="body1">
+                <Typography
+                    component={"div"}
+                    className="pt-2"
+                    color={color}
+                    variant="body1"
+                >
                     <div className="flex">
                         <CalendarMonthRoundedIcon className="mr-2" />
                         <div>
@@ -79,13 +84,19 @@ const EventCard = ({
                 </Typography>
                 <Typography
                     color={color}
+                    component={"div"}
                     className="flex justify-center pb-2 pt-2"
                     variant="h6"
                 >
                     Asistencia
                 </Typography>
                 <Divider />
-                <Typography className="pt-2" color={color} variant="body1">
+                <Typography
+                    component={"div"}
+                    className="pt-2"
+                    color={color}
+                    variant="body1"
+                >
                     <div className="flex">
                         <PeopleRoundedIcon className="mr-2" />
                         <b className="mr-2">Jugadores:</b> {atendence}
