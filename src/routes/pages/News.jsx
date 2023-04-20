@@ -7,7 +7,6 @@ import Stack from "@mui/material/Stack";
 import { useDarkMode } from "../../hooks/contex/DarkModeContex";
 import EmptyData from "../../components/EmptyData";
 import ErrorData from "../../components/ErrorData";
-// import PaginationItem from "@mui/material/PaginationItem";
 
 import {
     PROXY_CORS_URL_GET,
@@ -18,10 +17,21 @@ import {
 const News = () => {
     const loaded = useRef(false);
     const firstRender = useRef(true);
+    const totalItems = useRef(0);
     const [NewsResponse, setNewsResponse] = useState(false);
     const { darkMode } = useDarkMode();
 
     const color = darkMode ? "white" : "black";
+
+    // pagination
+    const [page, setPage] = useState(1);
+    const handleChange = (event, page) => {
+        setPage(page);
+    };
+
+    const itemsPerPage = 6; // 6 items per page
+    const startIndex = (page - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
 
     // eslint-disable-next-line
     const [loading, error, succes, bodyResponse] = useFetch(
@@ -55,10 +65,12 @@ const News = () => {
 
     const renderNews = () => {
         if (NewsResponse && NewsResponse.length > 0) {
+            totalItems.current = NewsResponse.length;
             let newListCopy = JSON.parse(JSON.stringify(NewsResponse));
             newListCopy.sort((a, b) => {
                 return new Date(b.published_at) - new Date(a.published_at);
             });
+            newListCopy = newListCopy.slice(startIndex, endIndex);
             return newListCopy.map((event) => {
                 return (
                     <NewCard
@@ -136,7 +148,11 @@ const News = () => {
                 <div className="flex justify-center pb-5">
                     <Stack spacing={2}>
                         <Pagination
-                            count={10}
+                            count={Math.ceil(totalItems.current / itemsPerPage)}
+                            page={page}
+                            onChange={(event, page) =>
+                                handleChange(event, page)
+                            }
                             variant="outlined"
                             shape="rounded"
                         />
@@ -149,7 +165,7 @@ const News = () => {
     const checkError = () => {
         if (error) {
             return <ErrorData msj={"Error al cargar las noticias"} />;
-        } else if (!loading && firstRender.current === false) {
+        } else if (!loading && !firstRender.current) {
             return renderPage();
         }
     };
