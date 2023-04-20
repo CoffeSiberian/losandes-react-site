@@ -46,11 +46,14 @@ const NewCard = ({
             <div
                 className={`flex flex-col ${themeTatailwind.secundary.main} rounded-lg border-2 border-transparent hover:border-[#3ca9d0] shadow-2xl m-4 mb-12 p-4`}
             >
+                {/*
+                en planificacion para poner una imagen de fondo
                 <img
                     className="object-cover rounded-lg drop-shadow-lg"
                     src="https://static.truckersmp.com/images/event/cover/14653.1678403142.jpeg"
                     alt="Los Andes VTC logo"
                 />
+            */}
                 <div className="flex flex-col h-full pb-2">
                     <div>
                         <Link

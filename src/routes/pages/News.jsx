@@ -16,7 +16,6 @@ import {
 
 const News = () => {
     const loaded = useRef(false);
-    const firstRender = useRef(true);
     const totalItems = useRef(0);
     const [NewsResponse, setNewsResponse] = useState(false);
     const { darkMode } = useDarkMode();
@@ -56,7 +55,6 @@ const News = () => {
     };
 
     useEffect(() => {
-        firstRender.current = false;
         if (!loaded.current) {
             getNews();
             loaded.current = true;
@@ -165,7 +163,7 @@ const News = () => {
     const checkError = () => {
         if (error) {
             return <ErrorData msj={"Error al cargar las noticias"} />;
-        } else if (!loading && !firstRender.current) {
+        } else if (!loading) {
             return renderPage();
         }
     };
