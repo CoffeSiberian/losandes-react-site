@@ -2,6 +2,8 @@ import { Typography } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
 import EventCard from "../../components/EventCard";
 import useFetch from "../../hooks/useFetch";
+import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
 import { useDarkMode } from "../../hooks/contex/DarkModeContex";
 import EmptyData from "../../components/EmptyData";
 import ErrorData from "../../components/ErrorData";
@@ -15,10 +17,22 @@ import {
 const Events = () => {
     const loaded = useRef(false);
     const EventsResponse = useRef(false);
+
+    const totalItems = useRef(0);
     const [FilterEvents, setFilterEvents] = useState(false);
 
     const { darkMode } = useDarkMode();
     const color = darkMode ? "white" : "black";
+
+    // pagination
+    const [page, setPage] = useState(1);
+    const handleChange = (event, page) => {
+        setPage(page);
+    };
+
+    const itemsPerPage = 9; // 6 items per page
+    const startIndex = (page - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
 
     // eslint-disable-next-line
     const [loading, error, succes, bodyResponse] = useFetch(
@@ -73,8 +87,10 @@ const Events = () => {
 
     const renderEvents = () => {
         if (FilterEvents && FilterEvents.length > 0) {
-            return FilterEvents.map((event, index) => {
-                if (index === 0) {
+            totalItems.current = FilterEvents.length;
+            const eventListCopy = FilterEvents.slice(startIndex, endIndex);
+            return eventListCopy.map((event, index) => {
+                if (index === 0 && startIndex === 0) {
                     return nextEvent();
                 }
                 return (
@@ -131,9 +147,22 @@ const Events = () => {
 
     const renderPage = () => {
         return (
-            <>
+            <div key={"render"}>
                 <div className="grid md:grid-cols-3">{renderEvents()}</div>
-            </>
+                <div className="flex justify-center pb-5">
+                    <Stack spacing={2}>
+                        <Pagination
+                            count={Math.ceil(totalItems.current / itemsPerPage)}
+                            page={page}
+                            onChange={(event, page) =>
+                                handleChange(event, page)
+                            }
+                            variant="outlined"
+                            shape="rounded"
+                        />
+                    </Stack>
+                </div>
+            </div>
         );
     };
 
