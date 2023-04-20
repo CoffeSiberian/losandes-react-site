@@ -83,48 +83,54 @@ const News = () => {
                 return event.pinned;
             });
             if (pinnedNews.length > 0) {
-                return pinnedNews.map((event) => {
-                    return (
-                        <NewCard
-                            key={event.id}
-                            title={event.title}
-                            content_summary={event.content_summary}
-                            author={event.author}
-                            published_at={event.published_at}
-                            pinned={event.pinned}
-                            url={`https://truckersmp.com/`}
-                        />
-                    );
-                });
+                return (
+                    <>
+                        <div className="flex flex-col rounded-lg border-2 border-yellow-500 md:m-4">
+                            <Typography
+                                className="flex justify-center pb-4 pt-4"
+                                component={"div"}
+                                color={color}
+                                variant="h6"
+                            >
+                                <b>Destacados</b>
+                            </Typography>
+                            <div className="grid md:grid-cols-3">
+                                {pinnedNews.map((event) => {
+                                    return (
+                                        <NewCard
+                                            key={event.id}
+                                            title={event.title}
+                                            content_summary={
+                                                event.content_summary
+                                            }
+                                            author={event.author}
+                                            published_at={event.published_at}
+                                            pinned={event.pinned}
+                                            url={`https://truckersmp.com/`}
+                                        />
+                                    );
+                                })}
+                            </div>
+                        </div>
+                    </>
+                );
             }
-            return <EmptyData msj={"No se encontraron noticias destacadas"} />;
+            return <></>;
         }
-        return <EmptyData msj={"No se encontraron noticias destacadas"} />;
+        return <></>;
     };
 
     const renderPage = () => {
         return (
             <>
-                <div className="flex flex-col rounded-lg border-2 border-yellow-500 md:m-4">
-                    <Typography
-                        className="flex justify-center pb-4 pt-4"
-                        component={"div"}
-                        color={color}
-                        variant="h6"
-                    >
-                        Destacados
-                    </Typography>
-                    <div className="grid md:grid-cols-3">
-                        {renderPinnedNews()}
-                    </div>
-                </div>
+                {renderPinnedNews()}
                 <Typography
                     className="flex justify-center pb-4 pt-4"
                     component={"div"}
                     color={color}
                     variant="h6"
                 >
-                    Lo ultimo
+                    <b>Lo ultimo</b>
                 </Typography>
                 <div className="grid md:grid-cols-3">{renderNews()}</div>
                 <div className="flex justify-center pb-5">
@@ -152,7 +158,7 @@ const News = () => {
         <>
             <div className="flex justify-center m-2">
                 <Typography color={color} variant="h4">
-                    Noticias
+                    <b>Noticias</b>
                 </Typography>
             </div>
             {loading && <Typography variant="h4">Loading...</Typography>}
