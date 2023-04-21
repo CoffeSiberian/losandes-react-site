@@ -1,27 +1,29 @@
 import { Typography } from "@mui/material";
-import Link from "@mui/material/Link";
 import { useDarkMode } from "../hooks/contex/DarkModeContex";
-// import Button from "@mui/material/Button";
+import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
+import { useNavigate } from "react-router-dom";
 
 // icons
+import AddRoundedIcon from "@mui/icons-material/AddRounded";
 import CalendarMonthRoundedIcon from "@mui/icons-material/CalendarMonthRounded";
 import PersonRoundedIcon from "@mui/icons-material/PersonRounded";
 import PushPinRoundedIcon from "@mui/icons-material/PushPinRounded";
 //
 
 const NewCard = ({
+    id,
     img,
     title,
-    content_summary,
+    pinned,
     author,
     published_at,
-    pinned,
-    url,
+    content_summary,
 }) => {
+    const navigate = useNavigate();
     const { darkMode, themeTatailwind } = useDarkMode();
     const color = darkMode ? "white" : "black";
 
@@ -56,15 +58,9 @@ const NewCard = ({
             */}
                 <div className="flex flex-col h-full pb-2">
                     <div>
-                        <Link
-                            className="flex justify-center p-2"
-                            href={url}
-                            color={color}
-                            target="_blank"
-                            underline="none"
-                        >
-                            <Typography variant="h6">{title}</Typography>
-                        </Link>
+                        <Typography color={color} variant="h6">
+                            {title}
+                        </Typography>
                         <Divider />
                     </div>
                     <div className="flex pt-2">
@@ -76,28 +72,39 @@ const NewCard = ({
                             <div>{content_summary}</div>
                         </Typography>
                     </div>
-                    <div className="flex h-full w-full pt-3">
-                        <Typography
-                            component={"div"}
-                            className="flex h-full w-full"
-                            color={color}
-                            variant="caption"
-                        >
-                            <div className="flex w-full items-end">
-                                <PersonRoundedIcon
-                                    sx={{ width: 21, height: 21 }}
-                                    className="mr-2"
-                                />
-                                {author}
-                            </div>
-                            <div className="flex w-full items-end justify-end">
-                                <CalendarMonthRoundedIcon
-                                    sx={{ width: 21, height: 21 }}
-                                    className="mr-2"
-                                />
-                                {formatDate(published_at)}
-                            </div>
-                        </Typography>
+                    <div className="grid content-end h-full pt-3">
+                        <div className="flex justify-end">
+                            <Button
+                                variant="contained"
+                                endIcon={<AddRoundedIcon />}
+                                onClick={() => navigate(`/news/${id}`)}
+                            >
+                                Leer mas
+                            </Button>
+                        </div>
+                        <div className="flex h-full w-full pt-3">
+                            <Typography
+                                component={"div"}
+                                className="flex h-full w-full"
+                                color={color}
+                                variant="caption"
+                            >
+                                <div className="flex w-full items-end">
+                                    <PersonRoundedIcon
+                                        sx={{ width: 21, height: 21 }}
+                                        className="mr-2"
+                                    />
+                                    {author}
+                                </div>
+                                <div className="flex w-full items-end justify-end">
+                                    <CalendarMonthRoundedIcon
+                                        sx={{ width: 21, height: 21 }}
+                                        className="mr-2"
+                                    />
+                                    {formatDate(published_at)}
+                                </div>
+                            </Typography>
+                        </div>
                     </div>
                 </div>
             </div>

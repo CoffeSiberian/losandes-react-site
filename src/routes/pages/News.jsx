@@ -73,12 +73,12 @@ const News = () => {
                 return (
                     <NewCard
                         key={event.id}
+                        id={event.id}
                         title={event.title}
                         content_summary={event.content_summary}
                         author={event.author}
                         published_at={event.published_at}
                         pinned={event.pinned}
-                        url={`https://truckersmp.com/`}
                     />
                 );
             });
@@ -108,6 +108,7 @@ const News = () => {
                                 {pinnedNews.map((event) => {
                                     return (
                                         <NewCard
+                                            id={event.id}
                                             key={event.id}
                                             title={event.title}
                                             content_summary={

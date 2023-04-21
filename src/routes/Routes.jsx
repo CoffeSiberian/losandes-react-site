@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import Home from "./pages/Home";
 import Events from "./pages/Events";
 import News from "./pages/News";
+import NewView from "./pages/NewView";
 import Partners from "./pages/Partners";
 import Staff from "./pages/Staff";
 import Aboutus from "./pages/Aboutus";
@@ -40,6 +41,15 @@ const RoutePage = () => {
                         <>
                             <Header />
                             <News />
+                        </>
+                    }
+                />
+                <Route
+                    path="/news/:newId"
+                    element={
+                        <>
+                            <Header />
+                            <NewView />
                         </>
                     }
                 />
