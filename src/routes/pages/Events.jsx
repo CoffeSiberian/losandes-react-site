@@ -115,31 +115,29 @@ const Events = () => {
         if (FilterEvents && FilterEvents.length > 0) {
             let event = FilterEvents[0];
             return (
-                <>
-                    <div
-                        key={event.id}
-                        className="flex flex-col rounded-lg border-2 border-yellow-500 md:m-1"
+                <div
+                    key={event.id}
+                    className="flex flex-col rounded-lg border-2 border-yellow-500 md:m-1"
+                >
+                    <Typography
+                        className="flex justify-center pt-1"
+                        component={"div"}
+                        color={color}
+                        variant="h6"
                     >
-                        <Typography
-                            className="flex justify-center pt-1"
-                            component={"div"}
-                            color={color}
-                            variant="h6"
-                        >
-                            <b>Proximo evento</b>
-                        </Typography>
-                        <EventCard
-                            img={event.banner}
-                            name={event.name}
-                            date={event.start_at}
-                            game={event.game}
-                            server={event.server.name}
-                            atendence={event.attendances.confirmed}
-                            atendenceVtc={event.attendances.vtcs}
-                            url={`https://truckersmp.com/${event.url}`}
-                        />
-                    </div>
-                </>
+                        <b>Proximo evento</b>
+                    </Typography>
+                    <EventCard
+                        img={event.banner}
+                        name={event.name}
+                        date={event.start_at}
+                        game={event.game}
+                        server={event.server.name}
+                        atendence={event.attendances.confirmed}
+                        atendenceVtc={event.attendances.vtcs}
+                        url={`https://truckersmp.com/${event.url}`}
+                    />
+                </div>
             );
         }
         return <></>;
@@ -147,7 +145,7 @@ const Events = () => {
 
     const renderPage = () => {
         return (
-            <div key={"render"}>
+            <>
                 <div className="grid md:grid-cols-3">{renderEvents()}</div>
                 <div className="flex justify-center pb-5">
                     <Stack spacing={2}>
@@ -162,7 +160,7 @@ const Events = () => {
                         />
                     </Stack>
                 </div>
-            </div>
+            </>
         );
     };
 

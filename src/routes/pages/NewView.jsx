@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { useDarkMode } from "../../hooks/contex/DarkModeContex";
 import useFetch from "../../hooks/useFetch";
@@ -6,7 +7,16 @@ import ReactMarkdown from "react-markdown";
 import { Typography } from "@mui/material";
 import ErrorData from "../../components/ErrorData";
 import remarkGfm from "remark-gfm";
+import Button from "@mui/material/Button";
+import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
 import remarkBreaks from "remark-breaks";
+import CalendarMonthRoundedIcon from "@mui/icons-material/CalendarMonthRounded";
+import PersonRoundedIcon from "@mui/icons-material/PersonRounded";
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
+import timezone from "dayjs/plugin/timezone";
+import Divider from "@mui/material/Divider";
+import "../../static/css/NewViewStyle.scss";
 import {
     PROXY_CORS_URL_GET,
     TMP_API_URL,
@@ -19,6 +29,7 @@ const NewView = () => {
     const loaded = useRef(false);
     const [NewResponse, setNewResponse] = useState(false);
     const { darkMode } = useDarkMode();
+    const navigate = useNavigate();
 
     const color = darkMode ? "white" : "black";
 
@@ -51,17 +62,88 @@ const NewView = () => {
         } // eslint-disable-next-line
     }, []);
 
+    const formatDate = (date) => {
+        dayjs.extend(utc);
+        dayjs.extend(timezone);
+        return dayjs
+            .tz(date, "UTC")
+            .tz(dayjs.tz.guess())
+            .format("DD/MMMM/YYYY");
+    };
+
+    const renderInfo = () => {
+        return (
+            <div className="pt-4 pb-4">
+                <Typography
+                    component={"div"}
+                    className="flex h-full w-full"
+                    color={color}
+                    variant="caption"
+                >
+                    <div className="flex w-full self-center items-end">
+                        <PersonRoundedIcon
+                            sx={{ width: 21, height: 21 }}
+                            className="mr-2"
+                        />
+                        {NewResponse.author}
+                    </div>
+                    <Typography
+                        className="hidden md:flex w-full justify-center"
+                        component={"div"}
+                        variant="h6"
+                        color={color}
+                    >
+                        <b>{NewResponse.title}</b>
+                    </Typography>
+                    <div className="flex w-full self-center items-end justify-end">
+                        <CalendarMonthRoundedIcon
+                            sx={{ width: 21, height: 21 }}
+                            className="mr-2"
+                        />
+                        {formatDate(NewResponse.published_at)}
+                    </div>
+                </Typography>
+                <Divider className="pt-5" variant="middle" />
+            </div>
+        );
+    };
+
     const renderPage = () => {
         return (
-            <Typography
-                className="flex flex-col p-2 md:p-10 text-justify space-y-1"
-                component={"div"}
-                color={color}
-            >
-                <ReactMarkdown remarkPlugins={[remarkGfm, remarkBreaks]}>
-                    {NewResponse.content}
-                </ReactMarkdown>
-            </Typography>
+            <>
+                <Typography
+                    className="flex md:hidden w-full justify-center"
+                    component={"div"}
+                    variant="h6"
+                    color={color}
+                >
+                    <b>{NewResponse.title}</b>
+                </Typography>
+                <div className="flex flex-col p-2 md:p-10">
+                    {renderInfo()}
+                    <div className="pb-4 pt-3">
+                        <Button
+                            variant="contained"
+                            startIcon={<ArrowBackRoundedIcon />}
+                            onClick={() => navigate("/news")}
+                        >
+                            Regresar
+                        </Button>
+                    </div>
+                    <Typography
+                        className="text-justify space-y-1"
+                        component={"div"}
+                        color={color}
+                        variant="body1"
+                    >
+                        <ReactMarkdown
+                            remarkPlugins={[remarkGfm, remarkBreaks]}
+                        >
+                            {NewResponse.content}
+                        </ReactMarkdown>
+                    </Typography>
+                </div>
+            </>
         );
     };
 
@@ -74,7 +156,7 @@ const NewView = () => {
     };
 
     return (
-        <div>
+        <div className="viewNew">
             {loading && <Typography variant="h4">Loading...</Typography>}
             {checkError()}
         </div>
