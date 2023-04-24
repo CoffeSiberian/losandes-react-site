@@ -46,7 +46,7 @@ const NewCard = ({
                 <></>
             )}
             <div
-                className={`flex flex-col ${themeTatailwind.secundary.main} rounded-lg border-2 border-transparent hover:border-[#3ca9d0] shadow-2xl m-4 mb-12 p-4`}
+                className={`flex flex-col ${themeTatailwind.secundary.main} w-full rounded-lg border-2 border-transparent hover:border-[#3ca9d0] shadow-2xl m-4 mb-12 p-4`}
             >
                 {/*
                 en planificacion para poner una imagen de fondo
