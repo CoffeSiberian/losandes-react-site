@@ -37,18 +37,22 @@ const DarkMode = ({ children }) => {
     const darkTailwind = {
         primary: {
             main: "bg-neutral-900",
+            color: "white",
         },
         secundary: {
             main: "bg-stone-800",
+            color: "white",
         },
     };
 
     const lightTailwind = {
         primary: {
             main: "bg-white",
+            color: "black",
         },
         secundary: {
             main: "bg-gray-300",
+            color: "black",
         },
     };
 

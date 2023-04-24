@@ -18,9 +18,7 @@ const News = () => {
     const loaded = useRef(false);
     const totalItems = useRef(0);
     const [NewsResponse, setNewsResponse] = useState(false);
-    const { darkMode } = useDarkMode();
-
-    const color = darkMode ? "white" : "black";
+    const { themeTatailwind } = useDarkMode();
 
     // pagination
     const [page, setPage] = useState(1);
@@ -99,7 +97,7 @@ const News = () => {
                             <Typography
                                 className="flex justify-center pb-4 pt-4"
                                 component={"div"}
-                                color={color}
+                                color={themeTatailwind.primary.color}
                                 variant="h6"
                             >
                                 <b>Destacados</b>
@@ -138,7 +136,7 @@ const News = () => {
                 <Typography
                     className="flex justify-center pb-4 pt-4"
                     component={"div"}
-                    color={color}
+                    color={themeTatailwind.primary.color}
                     variant="h6"
                 >
                     <b>Lo ultimo</b>
@@ -172,7 +170,7 @@ const News = () => {
     return (
         <>
             <div className="flex justify-center m-2">
-                <Typography color={color} variant="h4">
+                <Typography color={themeTatailwind.primary.color} variant="h4">
                     <b>Noticias</b>
                 </Typography>
             </div>

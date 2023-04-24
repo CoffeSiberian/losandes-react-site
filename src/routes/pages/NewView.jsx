@@ -28,10 +28,8 @@ const NewView = () => {
 
     const loaded = useRef(false);
     const [NewResponse, setNewResponse] = useState(false);
-    const { darkMode } = useDarkMode();
+    const { themeTatailwind } = useDarkMode();
     const navigate = useNavigate();
-
-    const color = darkMode ? "white" : "black";
 
     // eslint-disable-next-line
     const [loading, error, succes, bodyResponse] = useFetch(
@@ -77,7 +75,7 @@ const NewView = () => {
                 <Typography
                     component={"div"}
                     className="flex h-full w-full"
-                    color={color}
+                    color={themeTatailwind.primary.color}
                     variant="caption"
                 >
                     <div className="flex w-full self-center items-end">
@@ -91,7 +89,7 @@ const NewView = () => {
                         className="hidden md:flex w-full justify-center"
                         component={"div"}
                         variant="h6"
-                        color={color}
+                        color={themeTatailwind.primary.color}
                     >
                         <b>{NewResponse.title}</b>
                     </Typography>
@@ -115,7 +113,7 @@ const NewView = () => {
                     className="flex md:hidden w-full justify-center"
                     component={"div"}
                     variant="h6"
-                    color={color}
+                    color={themeTatailwind.primary.color}
                 >
                     <b>{NewResponse.title}</b>
                 </Typography>
@@ -133,7 +131,7 @@ const NewView = () => {
                     <Typography
                         className="text-justify space-y-1"
                         component={"div"}
-                        color={color}
+                        color={themeTatailwind.primary.color}
                         variant="body1"
                     >
                         <ReactMarkdown

@@ -21,8 +21,7 @@ const Events = () => {
     const totalItems = useRef(0);
     const [FilterEvents, setFilterEvents] = useState(false);
 
-    const { darkMode } = useDarkMode();
-    const color = darkMode ? "white" : "black";
+    const { themeTatailwind } = useDarkMode();
 
     // pagination
     const [page, setPage] = useState(1);
@@ -122,7 +121,7 @@ const Events = () => {
                     <Typography
                         className="flex justify-center pt-1"
                         component={"div"}
-                        color={color}
+                        color={themeTatailwind.primary.color}
                         variant="h6"
                     >
                         <b>Proximo evento</b>
@@ -175,7 +174,7 @@ const Events = () => {
     return (
         <>
             <div className="flex justify-center m-2">
-                <Typography color={color} variant="h4">
+                <Typography color={themeTatailwind.primary.color} variant="h4">
                     <b>Eventos oficiales</b>
                 </Typography>
             </div>

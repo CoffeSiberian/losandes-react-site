@@ -26,8 +26,7 @@ const EventCard = ({
     atendenceVtc,
     url,
 }) => {
-    const { darkMode, themeTatailwind } = useDarkMode();
-    const color = darkMode ? "white" : "black";
+    const { themeTatailwind } = useDarkMode();
 
     const formatDate = (date) => {
         dayjs.extend(utc);
@@ -51,7 +50,7 @@ const EventCard = ({
                 <Link
                     className="flex justify-center p-2"
                     href={url}
-                    color={color}
+                    color={themeTatailwind.primary.color}
                     target="_blank"
                     underline="none"
                 >
@@ -61,7 +60,7 @@ const EventCard = ({
                 <Typography
                     component={"div"}
                     className="pt-2"
-                    color={color}
+                    color={themeTatailwind.primary.color}
                     variant="body1"
                 >
                     <div className="flex">
@@ -83,7 +82,7 @@ const EventCard = ({
                     </div>
                 </Typography>
                 <Typography
-                    color={color}
+                    color={themeTatailwind.primary.color}
                     component={"div"}
                     className="flex justify-center pb-2 pt-2"
                     variant="h6"
@@ -94,7 +93,7 @@ const EventCard = ({
                 <Typography
                     component={"div"}
                     className="pt-2"
-                    color={color}
+                    color={themeTatailwind.primary.color}
                     variant="body1"
                 >
                     <div className="flex">
