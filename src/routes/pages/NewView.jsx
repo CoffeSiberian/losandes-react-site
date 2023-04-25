@@ -12,9 +12,7 @@ import ArrowBackRoundedIcon from "@mui/icons-material/ArrowBackRounded";
 import remarkBreaks from "remark-breaks";
 import CalendarMonthRoundedIcon from "@mui/icons-material/CalendarMonthRounded";
 import PersonRoundedIcon from "@mui/icons-material/PersonRounded";
-import dayjs from "dayjs";
-import utc from "dayjs/plugin/utc";
-import timezone from "dayjs/plugin/timezone";
+import { formatOnlyDate } from "../../helpers/formatdate";
 import Divider from "@mui/material/Divider";
 import "../../static/css/NewViewStyle.scss";
 import {
@@ -60,15 +58,6 @@ const NewView = () => {
         } // eslint-disable-next-line
     }, []);
 
-    const formatDate = (date) => {
-        dayjs.extend(utc);
-        dayjs.extend(timezone);
-        return dayjs
-            .tz(date, "UTC")
-            .tz(dayjs.tz.guess())
-            .format("DD/MMMM/YYYY");
-    };
-
     const renderInfo = () => {
         return (
             <div className="pt-4 pb-4">
@@ -98,7 +87,7 @@ const NewView = () => {
                             sx={{ width: 21, height: 21 }}
                             className="mr-2"
                         />
-                        {formatDate(NewResponse.published_at)}
+                        {formatOnlyDate(NewResponse.published_at)}
                     </div>
                 </Typography>
                 <Divider className="pt-5" variant="middle" />

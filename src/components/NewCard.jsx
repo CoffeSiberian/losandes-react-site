@@ -2,10 +2,8 @@ import { Typography } from "@mui/material";
 import { useDarkMode } from "../hooks/contex/DarkModeContex";
 import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
-import dayjs from "dayjs";
-import utc from "dayjs/plugin/utc";
-import timezone from "dayjs/plugin/timezone";
 import { useNavigate } from "react-router-dom";
+import { formatOnlyDate } from "../helpers/formatdate";
 
 // icons
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
@@ -24,17 +22,7 @@ const NewCard = ({
     content_summary,
 }) => {
     const navigate = useNavigate();
-    const { darkMode, themeTatailwind } = useDarkMode();
-    const color = darkMode ? "white" : "black";
-
-    const formatDate = (date) => {
-        dayjs.extend(utc);
-        dayjs.extend(timezone);
-        return dayjs
-            .tz(date, "UTC")
-            .tz(dayjs.tz.guess())
-            .format("DD/MMMM/YYYY");
-    };
+    const { themeTatailwind } = useDarkMode();
 
     return (
         <div className="flex relative">
@@ -46,7 +34,7 @@ const NewCard = ({
                 <></>
             )}
             <div
-                className={`flex flex-col ${themeTatailwind.secundary.main} w-full rounded-lg border-2 border-transparent hover:border-[#3ca9d0] shadow-2xl m-4 mb-12 p-4`}
+                className={`flex flex-col ${themeTatailwind.secundary.main} w-full rounded-lg border-2 border-transparent hover:border-[${themeTatailwind.primary.border_color}] shadow-2xl m-4 mb-12 p-4`}
             >
                 {/*
                 en planificacion para poner una imagen de fondo
@@ -58,7 +46,10 @@ const NewCard = ({
             */}
                 <div className="flex flex-col h-full pb-2">
                     <div>
-                        <Typography color={color} variant="h6">
+                        <Typography
+                            color={themeTatailwind.primary.color}
+                            variant="h6"
+                        >
                             {title}
                         </Typography>
                         <Divider />
@@ -66,7 +57,7 @@ const NewCard = ({
                     <div className="flex pt-2">
                         <Typography
                             component={"div"}
-                            color={color}
+                            color={themeTatailwind.primary.color}
                             variant="subtitle2"
                         >
                             <div>{content_summary}</div>
@@ -86,7 +77,7 @@ const NewCard = ({
                             <Typography
                                 component={"div"}
                                 className="flex h-full w-full"
-                                color={color}
+                                color={themeTatailwind.primary.color}
                                 variant="caption"
                             >
                                 <div className="flex w-full items-end">
@@ -101,7 +92,7 @@ const NewCard = ({
                                         sx={{ width: 21, height: 21 }}
                                         className="mr-2"
                                     />
-                                    {formatDate(published_at)}
+                                    {formatOnlyDate(published_at)}
                                 </div>
                             </Typography>
                         </div>

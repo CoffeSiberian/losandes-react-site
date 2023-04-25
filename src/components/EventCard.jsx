@@ -3,9 +3,7 @@ import Link from "@mui/material/Link";
 import { useDarkMode } from "../hooks/contex/DarkModeContex";
 import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
-import dayjs from "dayjs";
-import utc from "dayjs/plugin/utc";
-import timezone from "dayjs/plugin/timezone";
+import { formatDate } from "../helpers/formatdate";
 
 // icons
 import OpenInNewRoundedIcon from "@mui/icons-material/OpenInNewRounded";
@@ -28,18 +26,9 @@ const EventCard = ({
 }) => {
     const { themeTatailwind } = useDarkMode();
 
-    const formatDate = (date) => {
-        dayjs.extend(utc);
-        dayjs.extend(timezone);
-        return dayjs
-            .tz(date, "UTC")
-            .tz(dayjs.tz.guess())
-            .format("DD/MMMM/YYYY HH:mm");
-    };
-
     return (
         <div
-            className={`flex flex-col ${themeTatailwind.secundary.main} rounded-lg border-2 border-transparent hover:border-[#3ca9d0] shadow-2xl m-4 mb-12 p-4`}
+            className={`flex flex-col ${themeTatailwind.secundary.main} rounded-lg border-2 border-transparent hover:border-[${themeTatailwind.primary.border_color}] shadow-2xl m-4 mb-12 p-4`}
         >
             <img
                 className="object-cover rounded-lg drop-shadow-lg"
