@@ -11,6 +11,7 @@ import {
     TMP_API_URL,
     COMPANY_ID,
     STAFF_IDS,
+    STAFF_COLORS,
 } from "../../helpers/configs";
 
 const Staff = () => {
@@ -81,25 +82,69 @@ const Staff = () => {
         );
     };
 
+    const getRoleStaff = (role_id) => {
+        // Categorizes the different staff and delivers an array according to their ID
+        let staff = filterStaff();
+        let role = staff.filter((member) => {
+            return member.role_id === role_id;
+        });
+        return role;
+    };
+
+    const getRoleName = (role_id) => {
+        let staff = filterStaff();
+        let role = staff.filter((member) => {
+            return member.role_id === role_id;
+        });
+        return role[0].role;
+    };
+
     const renderStaff = () => {
         let staff = filterStaff();
         if (staff.length === 0) return <EmptyData msj={"No hay Staff"} />;
 
         return (
-            <div className="grid grid-cols-3 gap-4 place-items-center">
-                {staff.map((member) => {
-                    if (!member.is_owner) {
-                        return (
-                            <StaffCard
-                                key={member.user_id}
-                                id={member.user_id}
-                                username={member.username}
-                                roleName={member.role}
-                                dateJoin={member.joinDate}
-                            />
-                        );
+            <div className="flex flex-col gap-5 pb-6">
+                {STAFF_IDS.roles.map((role, index) => {
+                    if (index === 0)
+                        return <div className="hidden" key={role}></div>; // prevent categorizing the owner
+                    let staffCategory = getRoleStaff(role);
+
+                    if (staffCategory.length === 0) {
+                        return <div className="hidden" key={role}></div>;
                     }
-                    return null;
+                    return (
+                        <div
+                            style={{ borderColor: STAFF_COLORS.roles[index] }}
+                            className={`flex flex-col rounded-lg border-2 md:ml-4 md:mr-4`}
+                            key={role}
+                        >
+                            <Typography
+                                component="div"
+                                className="flex justify-center pt-3"
+                                variant="h5"
+                                color={themeTatailwind.primary.color}
+                            >
+                                <b>{getRoleName(role)}</b>
+                            </Typography>
+                            <div
+                                key={role}
+                                className={`grid grid-cols-1 md:grid-cols-3 gap-4 place-items-center`}
+                            >
+                                {staffCategory.map((member) => {
+                                    return (
+                                        <StaffCard
+                                            key={member.user_id}
+                                            id={member.user_id}
+                                            username={member.username}
+                                            roleName={member.role}
+                                            dateJoin={member.joinDate}
+                                        />
+                                    );
+                                })}
+                            </div>
+                        </div>
+                    );
                 })}
             </div>
         );
