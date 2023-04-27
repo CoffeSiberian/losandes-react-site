@@ -71,7 +71,7 @@ const StaffCard = ({ id, username, roleName, dateJoin }) => {
 
     return (
         <div
-            className={`flex flex-col ${themeTatailwind.secundary.main} rounded-lg border-2 border-transparent hover:border-[${themeTatailwind.primary.border_color}] w-96 shadow-2xl m-4 mb-12 p-4 gap-3`}
+            className={`flex flex-col ${themeTatailwind.secundary.main} rounded-lg w-auto shadow-2xl m-4 mb-12 p-4 gap-3`}
         >
             <div className="flex justify-center">{checkErrorAvatar()}</div>
             <div>
