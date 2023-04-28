@@ -28,10 +28,10 @@ const EventCard = ({
 
     return (
         <div
-            className={`flex flex-col ${themeTatailwind.secundary.main} rounded-lg border-2 border-transparent hover:border-[${themeTatailwind.primary.border_color}] shadow-2xl m-4 mb-12 p-4`}
+            className={`flex flex-col ${themeTatailwind.secundary.main} rounded-lg border-2 border-transparent ${themeTatailwind.primary.border_color} shadow-2xl m-4 mb-12 p-4`}
         >
             <img
-                className="object-cover rounded-lg drop-shadow-lg"
+                className="object-cover rounded-xl drop-shadow-lg"
                 src={img}
                 alt="Los Andes VTC logo"
             />

@@ -38,12 +38,12 @@ const DarkMode = ({ children }) => {
         primary: {
             main: "bg-neutral-900",
             color: "white",
-            border_color: "#3ca9d0",
+            border_color: "hover:border-cyan-600",
         },
         secundary: {
             main: "bg-stone-800",
             color: "white",
-            border_color: "#3ca9d0",
+            border_color: "hover:border-cyan-600",
         },
     };
 
@@ -51,12 +51,12 @@ const DarkMode = ({ children }) => {
         primary: {
             main: "bg-white",
             color: "black",
-            border_color: "#3ca9d0",
+            border_color: "hover:border-cyan-600",
         },
         secundary: {
             main: "bg-gray-300",
             color: "black",
-            border_color: "#3ca9d0",
+            border_color: "hover:border-cyan-600",
         },
     };
 
