@@ -42,6 +42,7 @@ const DarkMode = ({ children }) => {
         },
         secundary: {
             main: "bg-stone-800",
+            main_contrast: "bg-stone-600",
             color: "white",
             border_color: "hover:border-cyan-600",
         },
@@ -55,6 +56,7 @@ const DarkMode = ({ children }) => {
         },
         secundary: {
             main: "bg-gray-300",
+            main_contrast: "bg-gray-200",
             color: "black",
             border_color: "hover:border-cyan-600",
         },

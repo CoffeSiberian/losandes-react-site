@@ -61,11 +61,15 @@ const Footer = () => {
                         src={logo}
                         alt="logo"
                     />
-                    <Typography variant="h4">Los Andes VTC</Typography>
+                    <Typography variant="h4">
+                        <b>Los Andes VTC</b>
+                    </Typography>
                 </div>
                 <div className="flex justify-center p-2">
                     <Typography>Empresa verificada por&nbsp;</Typography>
-                    <Typography color="error">Truckers MP&nbsp;</Typography>
+                    <Typography color="error">
+                        <b>Truckers MP&nbsp;</b>
+                    </Typography>
                     <VerifiedUserIcon color="secondary" />
                 </div>
                 <div className="flex justify-center mb-3 mt-3">
@@ -90,14 +94,14 @@ const Footer = () => {
                 </div>
                 <div className="flex justify-center mb-2">
                     <Link
-                        className="flex justify-center items-center p-2"
+                        className="flex justify-center gap-1 items-center p-2"
                         color={darkMode ? "white" : "black"}
                         href="https://github.com/CoffeSiberian"
                         target="_blank"
                         underline="none"
                     >
                         <Typography variant="caption">
-                            by: SiberianCoffe
+                            by: <b>SiberianCoffe</b>
                         </Typography>
                         <GitHubIcon />
                     </Link>
