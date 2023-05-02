@@ -63,7 +63,7 @@ const Staff = () => {
     const renderOwner = () => {
         let staff = filterStaff();
         return (
-            <div className="flex w-full justify-center">
+            <div className="flex w-full justify-center pb-6">
                 {staff.map((member) => {
                     if (member.is_owner) {
                         return (
@@ -104,7 +104,7 @@ const Staff = () => {
         if (staff.length === 0) return <EmptyData msj={"No hay Staff"} />;
 
         return (
-            <div className="flex flex-col gap-5 pb-6">
+            <div className="flex flex-col gap-5 p-6">
                 {STAFF_IDS.roles.map((role, index) => {
                     if (index === 0)
                         return <div className="hidden" key={role}></div>; // prevent categorizing the owner
@@ -129,7 +129,7 @@ const Staff = () => {
                             </Typography>
                             <div
                                 key={role}
-                                className="grid grid-cols-1 md:grid-cols-3 gap-5 p-3 justify-items-center"
+                                className="grid grid-cols-1 md:grid-cols-3 gap-5 p-6 justify-items-center"
                             >
                                 {staffCategory.map((member) => {
                                     return (

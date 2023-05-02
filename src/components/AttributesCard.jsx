@@ -33,7 +33,7 @@ const AttributesCard = () => {
         {
             atribute: "Competition & events",
             description:
-                "Competencias y eventos emocionantes que agregan emoción y diversión a la comunidad, promoviendo habilidades de conducción y alcanzando nuevas metas.",
+                "Competencias y eventos que agregan emoción y diversión a la comunidad, promoviendo habilidades de conducción y alcanzando nuevas metas.",
             icon: <EmojiEventsRoundedIcon fontSize="large" />,
         },
         {
