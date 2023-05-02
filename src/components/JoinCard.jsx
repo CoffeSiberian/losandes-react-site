@@ -10,9 +10,10 @@ const JoinCard = () => {
     const navigate = useNavigate();
     return (
         <div className="flex flex-col md:flex-row">
-            <div className="flex p-2 w-full">
+            <div className="flex justify-center p-2">
                 <img
-                    className="object-cover rounded-lg drop-shadow-lg aspect-video w-96"
+                    className="object-cover rounded-lg drop-shadow-lg aspect-video"
+                    style={{ width: "1000px", height: "auto" }}
                     src={my_welcome}
                     alt="welcome_image_card"
                 />
@@ -21,7 +22,7 @@ const JoinCard = () => {
             <div
                 className={`flex flex-col ${themeTatailwind.secundary.main} rounded-lg border-2 border-cyan-600 shadow-2xl m-4 p-4`}
             >
-                <div className="flex flex-col text-justify h-full gap-5 pb-2">
+                <div className="flex flex-col text-justify gap-5 pb-2">
                     <Typography
                         color={themeTatailwind.primary.color}
                         variant="h4"

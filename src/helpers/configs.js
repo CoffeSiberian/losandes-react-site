@@ -1,5 +1,12 @@
+import JsonConfigs from "../config.json";
+
 export const PROXY_CORS_URL_GET = process.env.REACT_APP_PROXY_CORS_URL_GET;
+export const PROXY_CORS_REST_API_URL = process.env.REACT_APP_REST_API_URL;
 export const TMP_API_URL = process.env.REACT_APP_TMP_API_URL;
 export const COMPANY_ID = process.env.REACT_APP_COMPANY_ID;
-export const STAFF_IDS = JSON.parse(`{"roles":${process.env.REACT_APP_STAFF_IDS}}`);
-export const STAFF_COLORS = JSON.parse(`{"roles":${process.env.REACT_APP_STAFF_COLORS}}`);
+
+export const STAFFS = JsonConfigs.staff;
+export const STAFF_IDS = JSON.parse(`{"roles":[${STAFFS.map((staff) => staff.staff_id)}]}`);
+export const STAFF_COLORS = JSON.parse(`{"roles":[${STAFFS.map((staff) => `"${staff.staff_color}"`)}]}`);
+
+export const PARTNERS = JsonConfigs.partners;
