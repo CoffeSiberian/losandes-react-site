@@ -22,7 +22,7 @@ const JoinCard = () => {
             <div
                 className={`flex flex-col ${themeTatailwind.secundary.main} rounded-lg border-2 border-cyan-600 shadow-2xl m-4 p-4`}
             >
-                <div className="flex flex-col text-justify gap-5 pb-2">
+                <div className="flex flex-col text-justify h-full gap-5 pb-2">
                     <Typography
                         color={themeTatailwind.primary.color}
                         variant="h4"
@@ -43,13 +43,15 @@ const JoinCard = () => {
                         Los Andes VTC!
                     </Typography>
                     <div className="grid content-end h-full">
-                        <Button
-                            startIcon={<HowToRegRoundedIcon />}
-                            variant="contained"
-                            onClick={() => navigate("/apply")}
-                        >
-                            Postularse
-                        </Button>
+                        <div className="flex justify-center">
+                            <Button
+                                startIcon={<HowToRegRoundedIcon />}
+                                variant="contained"
+                                onClick={() => navigate("/apply")}
+                            >
+                                Postularse
+                            </Button>
+                        </div>
                     </div>
                 </div>
             </div>
