@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import useFetch from "../../hooks/useFetch";
 import { useDarkMode } from "../../hooks/contex/DarkModeContex";
-import StaffCard from "../../components/StaffCard";
+import MemberCard from "../../components/MemberCard";
 import ErrorData from "../../components/ErrorData";
 import { Typography } from "@mui/material";
 import Pagination from "@mui/material/Pagination";
@@ -66,7 +66,7 @@ const Employees = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 self-center gap-10 md:gap-8 p-3">
                 {newListCopy.map((member) => {
                     return (
-                        <StaffCard
+                        <MemberCard
                             key={member.id}
                             id={member.user_id}
                             username={member.username}

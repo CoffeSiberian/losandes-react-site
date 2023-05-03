@@ -11,7 +11,7 @@ import defaultavatar from "../static/img/defaultavatar.png";
 
 import { PROXY_CORS_URL_GET, TMP_API_URL } from "../helpers/configs";
 
-const StaffCard = ({ id, username, roleName, dateJoin }) => {
+const MemberCard = ({ id, username, roleName, dateJoin }) => {
     const [Response, setResponse] = useState(false);
     const loaded = useRef(false);
     const { themeTatailwind } = useDarkMode();
@@ -112,4 +112,4 @@ const StaffCard = ({ id, username, roleName, dateJoin }) => {
     );
 };
 
-export default StaffCard;
+export default MemberCard;

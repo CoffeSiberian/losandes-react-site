@@ -20,13 +20,11 @@ const EventModal = ({ title, description, image, handleClose, open }) => {
             >
                 <DialogTitle>{title}</DialogTitle>
                 <DialogContent className="flex flex-col gap-3">
-                    <a href={image} target="_blank" rel="noreferrer">
-                        <img
-                            className="object-cover rounded-xl drop-shadow-lg"
-                            src={image}
-                            alt="rute"
-                        />
-                    </a>
+                    <img
+                        className="object-cover rounded-xl drop-shadow-lg"
+                        src={image}
+                        alt="rute"
+                    />
                     <div className="flex justify-center">
                         <Button
                             variant="contained"

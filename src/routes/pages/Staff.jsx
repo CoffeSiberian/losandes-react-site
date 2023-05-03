@@ -4,7 +4,7 @@ import ErrorData from "../../components/ErrorData";
 import useFetch from "../../hooks/useFetch";
 import { useEffect, useRef, useState } from "react";
 import { Typography } from "@mui/material";
-import StaffCard from "../../components/StaffCard";
+import StaffCard from "../../components/MemberCard";
 
 import {
     PROXY_CORS_URL_GET,
