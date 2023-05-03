@@ -1,4 +1,4 @@
-import { createContext, useState, useContext } from "react";
+import { createContext, useState, useContext, useEffect } from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 
 const DarkModeContex = createContext();
@@ -8,7 +8,7 @@ export const useDarkMode = () => {
 };
 
 const DarkMode = ({ children }) => {
-    const [darkMode, setDarkMode] = useState(false);
+    const [darkMode, setDarkModeState] = useState(false);
 
     const darkMaterial = {
         palette: {
@@ -65,6 +65,20 @@ const DarkMode = ({ children }) => {
     const themeMaterial = createTheme(darkMode ? darkMaterial : lightMaterial);
 
     const themeTatailwind = darkMode ? darkTailwind : lightTailwind;
+
+    const setDarkMode = (darkModeBool) => {
+        localStorage.setItem("darkMode", darkModeBool);
+        setDarkModeState(darkModeBool);
+    };
+
+    useEffect(() => {
+        const darkModeLocal = localStorage.getItem("darkMode");
+        if (darkModeLocal !== null) {
+            setDarkModeState(JSON.parse(darkModeLocal));
+        } else {
+            localStorage.setItem("darkMode", false);
+        }
+    }, []);
 
     return (
         <DarkModeContex.Provider
