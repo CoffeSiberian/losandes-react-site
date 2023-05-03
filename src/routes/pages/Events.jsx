@@ -96,6 +96,8 @@ const Events = () => {
                     <EventCard
                         key={event.id}
                         img={event.banner}
+                        rute_img={event.map}
+                        description={event.description}
                         name={event.name}
                         date={event.start_at}
                         game={event.game}
@@ -127,7 +129,10 @@ const Events = () => {
                         <b>Proximo evento</b>
                     </Typography>
                     <EventCard
+                        key={event.id}
                         img={event.banner}
+                        rute_img={event.map}
+                        description={event.description}
                         name={event.name}
                         date={event.start_at}
                         game={event.game}

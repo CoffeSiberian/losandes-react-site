@@ -56,7 +56,7 @@ const StaffCard = ({ id, username, roleName, dateJoin }) => {
     };
 
     const checkErrorAvatar = () => {
-        if (error) {
+        if (loading || error) {
             return (
                 <img
                     className="rounded-full w-24 h-24"
