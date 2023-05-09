@@ -10,3 +10,4 @@ export const STAFF_IDS = JSON.parse(`{"roles":[${STAFFS.map((staff) => staff.sta
 export const STAFF_COLORS = JSON.parse(`{"roles":[${STAFFS.map((staff) => `"${staff.staff_color}"`)}]}`);
 
 export const PARTNERS = JsonConfigs.partners;
+export const HALL_OF_FAME = JsonConfigs.hall_of_fame;

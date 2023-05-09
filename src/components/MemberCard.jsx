@@ -11,7 +11,7 @@ import defaultavatar from "../static/img/defaultavatar.png";
 
 import { PROXY_CORS_URL_GET, TMP_API_URL } from "../helpers/configs";
 
-const MemberCard = ({ id, username, roleName, dateJoin }) => {
+const MemberCard = ({ id, username, roleName, dateJoin, imgLink }) => {
     const [Response, setResponse] = useState(false);
     const loaded = useRef(false);
     const { themeTatailwind } = useDarkMode();
@@ -40,10 +40,37 @@ const MemberCard = ({ id, username, roleName, dateJoin }) => {
 
     useEffect(() => {
         if (!loaded.current) {
-            getProfileMember();
+            if (imgLink === undefined) {
+                getProfileMember();
+            } else {
+                setResponse({ avatar: imgLink });
+            }
             loaded.current = true;
         } // eslint-disable-next-line
     }, []);
+
+    const renderTmpProfile = (id) => {
+        return (
+            <>
+                <Typography
+                    color={themeTatailwind.secundary.color}
+                    variant="caption"
+                >
+                    En la empresa desde el {formatOnlyDate(dateJoin)}
+                </Typography>
+                <div className="grid content-end h-full">
+                    <Button
+                        variant="contained"
+                        startIcon={<OpenInNewRoundedIcon />}
+                        href={`https://truckersmp.com/user/${id}`}
+                        target="_blank"
+                    >
+                        Ver perfil
+                    </Button>
+                </div>
+            </>
+        );
+    };
 
     const renderAvatar = () => {
         return (
@@ -92,22 +119,7 @@ const MemberCard = ({ id, username, roleName, dateJoin }) => {
                     {roleName}
                 </Typography>
             </div>
-            <Typography
-                color={themeTatailwind.secundary.color}
-                variant="caption"
-            >
-                En la empresa desde el {formatOnlyDate(dateJoin)}
-            </Typography>
-            <div className="grid content-end h-full">
-                <Button
-                    variant="contained"
-                    startIcon={<OpenInNewRoundedIcon />}
-                    href={`https://truckersmp.com/user/${id}`}
-                    target="_blank"
-                >
-                    Ver perfil
-                </Button>
-            </div>
+            {imgLink === undefined ? renderTmpProfile(id) : <></>}
         </div>
     );
 };
