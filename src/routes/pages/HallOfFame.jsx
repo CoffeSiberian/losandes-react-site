@@ -9,7 +9,7 @@ import MemberCard from "../../components/MemberCard";
 
 const HallOfFame = () => {
     const { themeTatailwind } = useDarkMode();
-    const [Response, setResponse] = useState(false);
+    const [Response, setResponse] = useState([]);
     const loaded = useRef(false);
     const cdnDiscordAvatar = "https://cdn.discordapp.com/avatars/";
 
@@ -37,7 +37,7 @@ const HallOfFame = () => {
     }, []);
 
     const renderMembers = (rol_id, rol_name) => {
-        if (!Response || Response.length === 0) {
+        if (Response.length === 0) {
             return <></>;
         }
         const membersFilter = Response.filter((member) =>
@@ -83,9 +83,6 @@ const HallOfFame = () => {
     const renderPage = () => {
         return (
             <>
-                {succes && !loading && (
-                    <EmptyData key={"contenHallEmpty"} msj="Sin resultados" />
-                )}
                 <div
                     key="contenHall"
                     className="grid grid-cols-1 md:grid-cols-2 ml-3 mr-3 mb-5 gap-5"
@@ -113,6 +110,9 @@ const HallOfFame = () => {
                     <b>Salon de la fama</b>
                 </Typography>
             </div>
+            {succes && !loading && Response.length === 0 && (
+                <EmptyData key={"contenHallEmpty"} msj="Sin resultados" />
+            )}
             {loading && <Typography variant="h4">Loading...</Typography>}
             {checkError()}
         </>
