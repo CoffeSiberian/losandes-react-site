@@ -1,11 +1,11 @@
-import useFetch from "../../hooks/useFetch";
-import { useDarkMode } from "../../hooks/contex/DarkModeContex";
 import { useEffect, useRef, useState } from "react";
+import { HALL_OF_FAME, PROXY_CORS_REST_API_URL } from "../../helpers/configs";
+import { useDarkMode } from "../../hooks/contex/DarkModeContex";
 import { Typography } from "@mui/material";
+import useFetch from "../../hooks/useFetch";
 import ErrorData from "../../components/ErrorData";
 import EmptyData from "../../components/EmptyData";
 import MemberCard from "../../components/MemberCard";
-import { HALL_OF_FAME, PROXY_CORS_REST_API_URL } from "../../helpers/configs";
 
 const HallOfFame = () => {
     const { themeTatailwind } = useDarkMode();
@@ -37,8 +37,8 @@ const HallOfFame = () => {
     }, []);
 
     const renderMembers = (rol_id, rol_name) => {
-        if ((!Response || Response.length === 0) && !loading) {
-            return <EmptyData key={rol_id + "empydata"} msj="Sin resultados" />;
+        if (!Response || Response.length === 0) {
+            return <></>;
         }
         const membersFilter = Response.filter((member) =>
             member.roles.includes(rol_id)
@@ -46,7 +46,7 @@ const HallOfFame = () => {
         if (membersFilter.length === 0) return <></>;
         return (
             <div
-                className={`flex flex-col rounded-lg border-2 border-cyan-600 md:ml-4 md:mr-4`}
+                className={`flex flex-col rounded-lg border-2 border-yellow-600 md:ml-4 md:mr-4`}
                 key={rol_id}
             >
                 <Typography
@@ -82,17 +82,25 @@ const HallOfFame = () => {
 
     const renderPage = () => {
         return (
-            <div key="contenHall" className="flex flex-col mb-5 gap-5">
-                {HALL_OF_FAME.map((rol) => {
-                    return renderMembers(rol.rol_id, rol.rol_name);
-                })}
-            </div>
+            <>
+                {succes && !loading && (
+                    <EmptyData key={"contenHallEmpty"} msj="Sin resultados" />
+                )}
+                <div
+                    key="contenHall"
+                    className="grid grid-cols-1 md:grid-cols-2 ml-3 mr-3 mb-5 gap-5"
+                >
+                    {HALL_OF_FAME.map((rol) => {
+                        return renderMembers(rol.rol_id, rol.rol_name);
+                    })}
+                </div>
+            </>
         );
     };
 
     const checkError = () => {
         if (error) {
-            return <ErrorData msj={"Error al cargar las noticias"} />;
+            return <ErrorData msj={"Error al cargar"} />;
         } else if (!loading) {
             return renderPage();
         }
