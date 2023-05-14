@@ -36,69 +36,96 @@ const HallOfFame = () => {
         } // eslint-disable-next-line
     }, []);
 
-    const renderMembers = (rol_id, rol_name) => {
-        if (Response.length === 0) {
-            return <></>;
-        }
-        const membersFilter = Response.filter((member) =>
-            member.roles.includes(rol_id)
-        );
-        if (membersFilter.length === 0) return <></>;
-        return (
-            <div
-                className={`flex flex-col rounded-lg border-2 border-yellow-600 md:ml-4 md:mr-4`}
-                key={rol_id}
-            >
-                <Typography
-                    component="div"
-                    key={rol_id + "name"}
-                    className="flex justify-center pt-3"
-                    variant="h5"
-                    color={themeTatailwind.primary.color}
-                >
-                    <b>{rol_name}</b>
-                </Typography>
+    const renderMultiMembers = (rol_name, membersFilter) => {
+        return membersFilter.map((member) => {
+            return (
+                <MemberCard
+                    key={member.user.id + "card" + rol_name}
+                    id={member.user.id}
+                    username={member.nick}
+                    roleName={rol_name}
+                    imgLink={`${cdnDiscordAvatar}${member.user.id}/${member.user.avatar}`}
+                    dateJoin={member.joined_at}
+                />
+            );
+        });
+    };
 
-                <div
-                    key={rol_id + "cards"}
-                    className="flex flex-col items-center w-full gap-5 p-6"
-                >
-                    {membersFilter.map((member) => {
-                        return (
-                            <MemberCard
-                                key={rol_id + "card"}
-                                id={member.user.id}
-                                username={member.nick}
-                                roleName={rol_name}
-                                imgLink={`${cdnDiscordAvatar}${member.user.id}/${member.user.avatar}`}
-                                dateJoin={member.joined_at}
-                            />
-                        );
+    const renderSingleMember = (rol_name, membersFilter) => {
+        return membersFilter.map((member) => {
+            return (
+                <MemberCard
+                    key={member.user.id + "card" + rol_name}
+                    id={member.user.id}
+                    username={member.nick}
+                    roleName={rol_name}
+                    imgLink={`${cdnDiscordAvatar}${member.user.id}/${member.user.avatar}`}
+                    dateJoin={member.joined_at}
+                />
+            );
+        });
+    };
+
+    const renderMembers = (rol_id, rol_name) => {
+        /*
+        return boxMember and boolean if is multi members or null if not members found
+        */
+
+        if (Response.length === 0) return null;
+        const membersFilter = Response.filter((member) => {
+            return member.roles.includes(rol_id);
+        });
+        if (membersFilter.length === 0) return null;
+
+        return membersFilter.length > 1
+            ? {
+                  jsx: renderMultiMembers(rol_name, membersFilter),
+                  multi: true,
+              }
+            : {
+                  jsx: renderSingleMember(rol_name, membersFilter),
+                  multi: false,
+              };
+    };
+
+    const renderPage = () => {
+        const membersCards = {
+            single: [],
+            multi: [],
+        };
+
+        HALL_OF_FAME.map((rol) => {
+            let members = renderMembers(rol.rol_id, rol.rol_name);
+            if (members === null) return null;
+            if (!members.multi) {
+                membersCards.multi.push(members.jsx);
+                return null;
+            }
+            membersCards.single.push(members.jsx);
+            return null;
+        });
+        return (
+            <div className="flex flex-col ml-3 mr-3 mb-5 gap-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-items-center gap-8 p-2">
+                    {membersCards.multi.map((member) => {
+                        if (member === null) return <></>;
+                        return member;
+                    })}
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-items-center gap-8 p-2">
+                    {membersCards.single.map((member) => {
+                        if (member === null) return <></>;
+                        return member;
                     })}
                 </div>
             </div>
         );
     };
 
-    const renderPage = () => {
-        return (
-            <>
-                <div
-                    key="contenHall"
-                    className="grid grid-cols-1 md:grid-cols-2 ml-3 mr-3 mb-5 gap-5"
-                >
-                    {HALL_OF_FAME.map((rol) => {
-                        return renderMembers(rol.rol_id, rol.rol_name);
-                    })}
-                </div>
-            </>
-        );
-    };
-
     const checkError = () => {
         if (error) {
             return <ErrorData msj={"Error al cargar"} />;
-        } else if (!loading) {
+        } else if (!loading && succes) {
             return renderPage();
         }
     };
