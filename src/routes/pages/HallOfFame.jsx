@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { HALL_OF_FAME, PROXY_CORS_REST_API_URL } from "../../helpers/configs";
 import { useDarkMode } from "../../hooks/contex/DarkModeContex";
 import { Typography } from "@mui/material";
+import Divider from "@mui/material/Divider";
 import useFetch from "../../hooks/useFetch";
 import ErrorData from "../../components/ErrorData";
 import EmptyData from "../../components/EmptyData";
@@ -106,12 +107,15 @@ const HallOfFame = () => {
         });
         return (
             <div className="flex flex-col ml-3 mr-3 mb-5 gap-5">
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-items-center gap-8 p-2">
-                    {membersCards.multi.map((member) => {
-                        if (member === null) return <></>;
-                        return member;
-                    })}
+                <div className="rounded-lg border-2 border-yellow-600">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-items-center m-4 gap-8 p-2">
+                        {membersCards.multi.map((member) => {
+                            if (member === null) return <></>;
+                            return member;
+                        })}
+                    </div>
                 </div>
+                <Divider variant="middle" />
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-items-center gap-8 p-2">
                     {membersCards.single.map((member) => {
                         if (member === null) return <></>;

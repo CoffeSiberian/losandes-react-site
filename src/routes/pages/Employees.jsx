@@ -63,19 +63,34 @@ const Employees = () => {
         let newListCopy = JSON.parse(JSON.stringify(Response));
         newListCopy = newListCopy.slice(startIndex, endIndex);
         return (
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 self-center gap-10 md:gap-8 p-3">
-                {newListCopy.map((member) => {
-                    return (
-                        <MemberCard
-                            key={member.id}
-                            id={member.user_id}
-                            username={member.username}
-                            roleName={member.role}
-                            dateJoin={member.joinDate}
+            <>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 self-center gap-10 md:gap-8 p-3">
+                    {newListCopy.map((member) => {
+                        return (
+                            <MemberCard
+                                key={member.id}
+                                id={member.user_id}
+                                username={member.username}
+                                roleName={member.role}
+                                dateJoin={member.joinDate}
+                            />
+                        );
+                    })}
+                </div>
+                <div className="flex justify-center pb-5">
+                    <Stack spacing={2}>
+                        <Pagination
+                            count={Math.ceil(totalItems.current / itemsPerPage)}
+                            page={page}
+                            onChange={(event, page) =>
+                                handleChange(event, page)
+                            }
+                            variant="outlined"
+                            shape="rounded"
                         />
-                    );
-                })}
-            </div>
+                    </Stack>
+                </div>
+            </>
         );
     };
 
@@ -97,17 +112,6 @@ const Employees = () => {
             {loading && <Typography variant="h4">Loading...</Typography>}
 
             {checkError()}
-            <div className="flex justify-center pb-5">
-                <Stack spacing={2}>
-                    <Pagination
-                        count={Math.ceil(totalItems.current / itemsPerPage)}
-                        page={page}
-                        onChange={(event, page) => handleChange(event, page)}
-                        variant="outlined"
-                        shape="rounded"
-                    />
-                </Stack>
-            </div>
         </div>
     );
 };

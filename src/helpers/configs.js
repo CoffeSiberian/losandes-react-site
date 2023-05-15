@@ -1,5 +1,6 @@
 import JsonConfigs from "../config.json";
 
+export const TITLE = process.env.REACT_APP_TITLE
 export const PROXY_CORS_URL_GET = process.env.REACT_APP_PROXY_CORS_URL_GET;
 export const PROXY_CORS_REST_API_URL = process.env.REACT_APP_REST_API_URL;
 export const TMP_API_URL = process.env.REACT_APP_TMP_API_URL;
