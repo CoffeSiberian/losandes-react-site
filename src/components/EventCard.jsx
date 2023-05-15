@@ -114,15 +114,15 @@ const EventCard = ({
             <div className="grid content-end h-full gap-3">
                 <Button
                     variant="contained"
+                    color="success"
                     endIcon={<OpenInNewRoundedIcon />}
                     href={url}
                     target="_blank"
                 >
-                    Más información
+                    ¡Voy a estar allí!
                 </Button>
                 <Button
                     variant="contained"
-                    color="success"
                     endIcon={<MapRoundedIcon />}
                     onClick={() => setOpenEmpyData(true)}
                 >

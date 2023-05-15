@@ -9,12 +9,14 @@ import EmptyData from "../../components/EmptyData";
 import ErrorData from "../../components/ErrorData";
 
 import {
+    TITLE,
     PROXY_CORS_URL_GET,
     TMP_API_URL,
     COMPANY_ID,
 } from "../../helpers/configs";
 
 const News = () => {
+    document.title = TITLE + " | Noticias";
     const loaded = useRef(false);
     const totalItems = useRef(0);
     const [NewsResponse, setNewsResponse] = useState(false);

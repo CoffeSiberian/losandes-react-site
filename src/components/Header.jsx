@@ -56,7 +56,7 @@ const Header = () => {
         {
             icon: HandshakeRoundedIcon,
             text: "Partners",
-            url: "/partners",
+            url: "/news/31248",
         },
         {
             icon: HowToRegRoundedIcon,
@@ -74,7 +74,7 @@ const Header = () => {
         {
             icon: InfoRoundedIcon,
             text: "Sobre nosotros",
-            url: "/about",
+            url: "/news/29575",
         },
         {
             icon: AssignmentIndRoundedIcon,

@@ -4,9 +4,7 @@ import Home from "./pages/Home";
 import Events from "./pages/Events";
 import News from "./pages/News";
 import NewView from "./pages/NewView";
-import Partners from "./pages/Partners";
 import Staff from "./pages/Staff";
-import Aboutus from "./pages/Aboutus";
 import Contact from "./pages/Contact";
 import Apply from "./pages/Apply";
 import HallOfFame from "./pages/HallOfFame";
@@ -54,29 +52,11 @@ const RoutePage = () => {
                     }
                 />
                 <Route
-                    path="/partners"
-                    element={
-                        <>
-                            <Header />
-                            <Partners />
-                        </>
-                    }
-                />
-                <Route
                     path="/staff"
                     element={
                         <>
                             <Header />
                             <Staff />
-                        </>
-                    }
-                />
-                <Route
-                    path="/about"
-                    element={
-                        <>
-                            <Header />
-                            <Aboutus />
                         </>
                     }
                 />

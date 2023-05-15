@@ -1,5 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import { HALL_OF_FAME, PROXY_CORS_REST_API_URL } from "../../helpers/configs";
+import {
+    TITLE,
+    HALL_OF_FAME,
+    PROXY_CORS_REST_API_URL,
+} from "../../helpers/configs";
 import { useDarkMode } from "../../hooks/contex/DarkModeContex";
 import { Typography } from "@mui/material";
 import Divider from "@mui/material/Divider";
@@ -9,6 +13,7 @@ import EmptyData from "../../components/EmptyData";
 import MemberCard from "../../components/MemberCard";
 
 const HallOfFame = () => {
+    document.title = TITLE + " | Salón de la fama";
     const { themeTatailwind } = useDarkMode();
     const [Response, setResponse] = useState([]);
     const loaded = useRef(false);

@@ -7,12 +7,14 @@ import { Typography } from "@mui/material";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import {
+    TITLE,
     PROXY_CORS_URL_GET,
     TMP_API_URL,
     COMPANY_ID,
 } from "../../helpers/configs";
 
 const Employees = () => {
+    document.title = TITLE + " | Miembros";
     const [Response, setResponse] = useState(false);
     const loaded = useRef(false);
     const totalItems = useRef(0);

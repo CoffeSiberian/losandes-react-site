@@ -16,6 +16,7 @@ import { formatOnlyDate } from "../../helpers/formatdate";
 import Divider from "@mui/material/Divider";
 import "../../static/css/NewViewStyle.scss";
 import {
+    TITLE,
     PROXY_CORS_URL_GET,
     TMP_API_URL,
     COMPANY_ID,
@@ -59,6 +60,9 @@ const NewView = () => {
     }, []);
 
     const renderInfo = () => {
+        document.title = NewResponse
+            ? `${TITLE} | ${NewResponse.title}`
+            : TITLE;
         return (
             <div className="pt-4 pb-4">
                 <Typography

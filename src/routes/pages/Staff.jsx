@@ -7,6 +7,7 @@ import { Typography } from "@mui/material";
 import StaffCard from "../../components/MemberCard";
 
 import {
+    TITLE,
     PROXY_CORS_URL_GET,
     TMP_API_URL,
     COMPANY_ID,
@@ -15,6 +16,7 @@ import {
 } from "../../helpers/configs";
 
 const Staff = () => {
+    document.title = TITLE + " | Staff";
     const loaded = useRef(false);
     const filterStaffMem = useRef(false);
     const [Response, setResponse] = useState(false);
