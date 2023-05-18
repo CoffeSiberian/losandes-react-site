@@ -5,6 +5,7 @@ import useFetch from "../../hooks/useFetch";
 import { useEffect, useRef, useState } from "react";
 import { Typography } from "@mui/material";
 import StaffCard from "../../components/MemberCard";
+import ModalLoading from "../../components/ModalLoading";
 
 import {
     TITLE,
@@ -180,7 +181,7 @@ const Staff = () => {
                     <b>Nuestro Staff</b>
                 </Typography>
             </div>
-            {loading && <Typography variant="h4">Loading...</Typography>}
+            <ModalLoading open={loading} />
             {checkError()}
         </>
     );

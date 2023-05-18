@@ -7,6 +7,7 @@ import Stack from "@mui/material/Stack";
 import { useDarkMode } from "../../hooks/contex/DarkModeContex";
 import EmptyData from "../../components/EmptyData";
 import ErrorData from "../../components/ErrorData";
+import ModalLoading from "../../components/ModalLoading";
 
 import {
     TITLE,
@@ -185,7 +186,7 @@ const Events = () => {
                     <b>Eventos oficiales</b>
                 </Typography>
             </div>
-            {loading && <Typography variant="h4">Loading...</Typography>}
+            <ModalLoading open={loading} />
             {checkError()}
         </>
     );

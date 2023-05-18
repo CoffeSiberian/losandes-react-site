@@ -14,6 +14,7 @@ import CalendarMonthRoundedIcon from "@mui/icons-material/CalendarMonthRounded";
 import PersonRoundedIcon from "@mui/icons-material/PersonRounded";
 import { formatOnlyDate } from "../../helpers/formatdate";
 import Divider from "@mui/material/Divider";
+import ModalLoading from "../../components/ModalLoading";
 import "../../static/css/NewViewStyle.scss";
 import {
     TITLE,
@@ -140,7 +141,7 @@ const NewView = () => {
 
     const checkError = () => {
         if (error) {
-            return <ErrorData msj={"Error al cargar las noticias"} />;
+            return <ErrorData msj={"Error al cargar la noticia"} />;
         } else if (!loading) {
             return renderPage();
         }
@@ -148,7 +149,7 @@ const NewView = () => {
 
     return (
         <div className="viewNew">
-            {loading && <Typography variant="h4">Loading...</Typography>}
+            <ModalLoading open={loading} />
             {checkError()}
         </div>
     );

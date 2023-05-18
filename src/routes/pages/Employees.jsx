@@ -6,6 +6,7 @@ import ErrorData from "../../components/ErrorData";
 import { Typography } from "@mui/material";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
+import ModalLoading from "../../components/ModalLoading";
 import {
     TITLE,
     PROXY_CORS_URL_GET,
@@ -111,7 +112,7 @@ const Employees = () => {
                     <b>Nuestros Empleados</b>
                 </Typography>
             </div>
-            {loading && <Typography variant="h4">Loading...</Typography>}
+            <ModalLoading open={loading} />
 
             {checkError()}
         </div>

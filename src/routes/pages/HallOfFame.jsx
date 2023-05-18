@@ -11,6 +11,7 @@ import useFetch from "../../hooks/useFetch";
 import ErrorData from "../../components/ErrorData";
 import EmptyData from "../../components/EmptyData";
 import MemberCard from "../../components/MemberCard";
+import ModalLoading from "../../components/ModalLoading";
 
 const HallOfFame = () => {
     document.title = TITLE + " | Salón de la fama";
@@ -149,7 +150,7 @@ const HallOfFame = () => {
             {succes && !loading && Response.length === 0 && (
                 <EmptyData key={"contenHallEmpty"} msj="Sin resultados" />
             )}
-            {loading && <Typography variant="h4">Loading...</Typography>}
+            <ModalLoading open={loading} />
             {checkError()}
         </>
     );
