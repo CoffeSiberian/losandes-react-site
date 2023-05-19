@@ -12,3 +12,4 @@ export const STAFF_COLORS = JSON.parse(`{"roles":[${STAFFS.map((staff) => `"${st
 
 export const PARTNERS = JsonConfigs.partners;
 export const HALL_OF_FAME = JsonConfigs.hall_of_fame;
+export const CAPTCHA_KEY = process.env.REACT_APP_CAPTCHA_KEY;
