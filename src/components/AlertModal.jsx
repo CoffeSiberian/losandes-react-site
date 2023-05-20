@@ -27,7 +27,9 @@ const AlertModal = ({ title, description, handleClose, open }) => {
                 </DialogContentText>
             </DialogContent>
             <DialogActions>
-                <Button onClick={handleClose}>Cerrar</Button>
+                <Button color="error" onClick={handleClose}>
+                    Cerrar
+                </Button>
             </DialogActions>
         </Dialog>
     );

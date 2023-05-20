@@ -14,19 +14,16 @@ const SubmitButton = ({
     url,
 }) => {
     const [openEmpyData, setOpenEmpyData] = useState(false);
-    const { loading, error, succes, bodySet, setError, setSucces } = useFetch(
-        url,
-        "POST",
-        {
+    const [loading, error, succes, bodyResponse, setError, setSucces] =
+        useFetch(url, "POST", {
             "Content-Type": "application/json",
-        }
-    );
+        });
 
     const dataEmpyToSend = async () => {
         if (checkTextError()) {
             return setOpenEmpyData(true);
         }
-        let fetchResponse = await bodySet(data);
+        const fetchResponse = await bodyResponse(data);
         if (fetchResponse.ok) {
             recaptchaRef.current.reset();
             resetForm();
