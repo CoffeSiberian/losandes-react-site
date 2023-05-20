@@ -1,11 +1,11 @@
 import ReCAPTCHA from "react-google-recaptcha";
 import { CAPTCHA_KEY } from "../helpers/configs";
 
-const ReCapcha = ({ handleChangeSelect, recaptchaRef }) => {
+const ReCaptchaCom = ({ handleChangeSelect, recaptchaRef }) => {
     const onChange = (token) => {
         if (token !== null) {
-            handleChangeSelect(token, "capcha");
-        } else handleChangeSelect("", "capcha");
+            handleChangeSelect(token, "captcha");
+        } else handleChangeSelect("", "captcha");
     };
 
     return (
@@ -17,4 +17,4 @@ const ReCapcha = ({ handleChangeSelect, recaptchaRef }) => {
     );
 };
 
-export default ReCapcha;
+export default ReCaptchaCom;

@@ -1,10 +1,11 @@
 import { useState, useRef } from "react";
 import { Typography } from "@mui/material";
 import { useDarkMode } from "../../hooks/contex/DarkModeContex";
+import { PROXY_CORS_REST_API_URL } from "../../helpers/configs";
 import TextField from "@mui/material/TextField";
-import MenuItem from "@mui/material/MenuItem";
+//import MenuItem from "@mui/material/MenuItem";
 import SubmitButton from "../../components/SubmitButton";
-import ReCapcha from "../../components/ReCapcha";
+import ReCaptchaCom from "../../components/ReCaptchaCom";
 
 const Contact = () => {
     const { themeTatailwind } = useDarkMode();
@@ -61,18 +62,61 @@ const Contact = () => {
     };
 
     return (
-        <div className="flex justify-center">
+        <div className="flex flex-col justify-center">
+            <Typography
+                className="flex text-center md:justify-center"
+                variant="h3"
+                color={themeTatailwind.primary.color}
+            >
+                Formulario de contacto
+            </Typography>
             <form className="flex flex-col">
-                <Typography
-                    className="flex text-center md:justify-center"
-                    variant="h3"
-                    color={themeTatailwind.primary.color}
-                >
-                    Formulario de contacto
-                </Typography>
-
+                <div>
+                    <TextField
+                        error={inputError.name}
+                        id="name"
+                        label="Nombre"
+                        variant="outlined"
+                        value={data.name}
+                        onChange={handleChangeText}
+                    />
+                    <TextField
+                        error={inputError.email}
+                        id="email"
+                        label="Email"
+                        variant="outlined"
+                        value={data.email}
+                        onChange={handleChangeText}
+                    />
+                    <TextField
+                        error={inputError.reason}
+                        id="reason"
+                        label="Razon"
+                        variant="outlined"
+                        value={data.reason}
+                        onChange={handleChangeText}
+                    />
+                    <TextField
+                        error={inputError.discord}
+                        id="discord"
+                        label="Discord"
+                        variant="outlined"
+                        value={data.discord}
+                        onChange={handleChangeText}
+                    />
+                    <TextField
+                        error={inputError.message}
+                        id="message"
+                        label="Mensaje"
+                        multiline
+                        rows={4}
+                        variant="outlined"
+                        value={data.message}
+                        onChange={handleChangeText}
+                    />
+                </div>
                 <div className="flex items-center m-3 flex-col">
-                    <ReCapcha
+                    <ReCaptchaCom
                         handleChangeSelect={handleChangeSelect}
                         recaptchaRef={recaptchaRef}
                     />
@@ -81,6 +125,7 @@ const Contact = () => {
                         data={data}
                         recaptchaRef={recaptchaRef}
                         resetForm={resetAllData}
+                        url={`${PROXY_CORS_REST_API_URL}/postContact`}
                     />
                 </div>
             </form>

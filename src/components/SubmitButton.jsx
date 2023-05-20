@@ -14,8 +14,13 @@ const SubmitButton = ({
     url,
 }) => {
     const [openEmpyData, setOpenEmpyData] = useState(false);
-    const { loading, error, succes, bodySet, setError, setSucces } =
-        useFetch(url);
+    const { loading, error, succes, bodySet, setError, setSucces } = useFetch(
+        url,
+        "POST",
+        {
+            "Content-Type": "application/json",
+        }
+    );
 
     const dataEmpyToSend = async () => {
         if (checkTextError()) {

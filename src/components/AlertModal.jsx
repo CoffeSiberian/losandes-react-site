@@ -8,29 +8,29 @@ import DialogTitle from "@mui/material/DialogTitle";
 import Slide from "@mui/material/Slide";
 
 const Transition = forwardRef(function Transition(props, ref) {
-	return <Slide direction="up" ref={ref} {...props} />;
+    return <Slide direction="up" ref={ref} {...props} />;
 });
 
 const AlertModal = ({ title, description, handleClose, open }) => {
-	return (
-		<div>
-			<Dialog
-				open={open}
-				TransitionComponent={Transition}
-				keepMounted
-				onClose={handleClose}
-				aria-describedby="alertInfo"
-			>
-				<DialogTitle>{title}</DialogTitle>
-				<DialogContent>
-					<DialogContentText id="alertInfo">{description}</DialogContentText>
-				</DialogContent>
-				<DialogActions>
-					<Button onClick={handleClose}>Cerrar</Button>
-				</DialogActions>
-			</Dialog>
-		</div>
-	);
+    if (open === undefined) open = false;
+    return (
+        <Dialog
+            open={open}
+            TransitionComponent={Transition}
+            onClose={handleClose}
+            aria-describedby="alertInfo"
+        >
+            <DialogTitle>{title}</DialogTitle>
+            <DialogContent>
+                <DialogContentText id="alertInfo">
+                    {description}
+                </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+                <Button onClick={handleClose}>Cerrar</Button>
+            </DialogActions>
+        </Dialog>
+    );
 };
 
 export default AlertModal;
