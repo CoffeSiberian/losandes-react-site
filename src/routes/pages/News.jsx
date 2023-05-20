@@ -99,7 +99,7 @@ const News = () => {
                         <div className="flex flex-col rounded-lg border-2 border-yellow-500 md:m-4">
                             <Typography
                                 className="flex justify-center pb-4 pt-4"
-                                component={"div"}
+                                component="div"
                                 color={themeTatailwind.primary.color}
                                 variant="h6"
                             >

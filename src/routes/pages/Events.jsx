@@ -124,8 +124,6 @@ const Events = () => {
                     className="flex flex-col rounded-lg border-2 border-yellow-500 md:m-1"
                 >
                     <Typography
-                        className="flex justify-center pt-1"
-                        component={"div"}
                         color={themeTatailwind.primary.color}
                         variant="h6"
                     >

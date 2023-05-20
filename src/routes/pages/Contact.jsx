@@ -127,8 +127,6 @@ const Contact = () => {
 
             if (data.dataValues[prop] === "") {
                 errorCopy[prop] = true;
-            } else {
-                errorCopy[prop] = errorCopy[prop];
             }
             return data.dataValues[prop];
         });
@@ -145,17 +143,18 @@ const Contact = () => {
     return (
         <div className="flex flex-col justify-center">
             <Typography
-                className="flex text-center md:justify-center"
-                variant="h3"
+                className="flex justify-center pt-1"
                 color={themeTatailwind.primary.color}
+                variant="h4"
             >
-                Formulario de contacto
+                <b>Contacto</b>
             </Typography>
-            <form className="flex flex-col">
-                <div>
+            <form className="flex flex-col gap-7 p-3 md:pl-14 md:pr-14">
+                <div className="flex flex-col md:flex-row justify-center gap-5">
                     <TextField
                         required
                         color="info"
+                        inputProps={{ maxLength: 150 }}
                         error={data.dataError.name}
                         id="name"
                         label="Nombre"
@@ -166,6 +165,7 @@ const Contact = () => {
                     <TextField
                         required
                         color="info"
+                        inputProps={{ maxLength: 240 }}
                         error={data.dataError.email}
                         id="email"
                         label="Email"
@@ -174,27 +174,8 @@ const Contact = () => {
                         onChange={handleChangeText}
                     />
                     <TextField
-                        required
                         color="info"
-                        error={data.dataError.reason}
-                        id="reason"
-                        label="Razon"
-                        select
-                        className="w-60"
-                        variant="outlined"
-                        value={data.dataValues.reason}
-                        onChange={(e) =>
-                            handleChangeSelect(e.target.value, "reason")
-                        }
-                    >
-                        {selectReason.map((option) => (
-                            <MenuItem key={option.value} value={option.value}>
-                                {option.label}
-                            </MenuItem>
-                        ))}
-                    </TextField>
-                    <TextField
-                        color="info"
+                        inputProps={{ maxLength: 200 }}
                         error={data.dataError.discord}
                         id="discord"
                         label="Discord"
@@ -202,23 +183,57 @@ const Contact = () => {
                         value={data.dataValues.discord}
                         onChange={handleChangeText}
                     />
+                </div>
+                <div className="flex justify-center gap-5">
+                    <div className="w-full md:max-w-lg">
+                        <TextField
+                            sx={{ display: "flex", width: "100%" }}
+                            required
+                            color="info"
+                            inputProps={{ maxLength: 200 }}
+                            error={data.dataError.reason}
+                            id="reason"
+                            label="Razon"
+                            select
+                            variant="outlined"
+                            value={data.dataValues.reason}
+                            onChange={(e) =>
+                                handleChangeSelect(e.target.value, "reason")
+                            }
+                        >
+                            {selectReason.map((option) => (
+                                <MenuItem
+                                    key={option.value}
+                                    value={option.value}
+                                >
+                                    {option.label}
+                                </MenuItem>
+                            ))}
+                        </TextField>
+                    </div>
+                </div>
+                <div>
                     <TextField
                         required
                         color="info"
+                        inputProps={{ maxLength: 3800 }}
                         error={data.dataError.message}
                         id="message"
                         label="Mensaje"
+                        fullWidth
                         multiline
-                        rows={4}
+                        rows={5}
                         variant="outlined"
                         value={data.dataValues.message}
                         onChange={handleChangeText}
                     />
                 </div>
-                <div className="flex items-center m-3 flex-col">
+
+                <div className="flex items-center gap-5 flex-col">
                     <ReCaptchaCom
                         handleChangeSelect={handleChangeSelect}
                         recaptchaRef={recaptchaRef}
+                        error={data.dataError.captcha}
                     />
                     <SubmitButton
                         checkTextError={checkTextError}
