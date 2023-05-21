@@ -2,6 +2,9 @@ import { useState, useRef } from "react";
 import { Typography } from "@mui/material";
 import { useDarkMode } from "../../hooks/contex/DarkModeContex";
 import { PROXY_CORS_REST_API_URL } from "../../helpers/configs";
+import { TITLE } from "../../helpers/configs";
+import Slider from "../../components/Slider";
+import PartnersCard from "../../components/PartnersCard";
 import deepClone from "../../helpers/deepClone";
 import TextField from "@mui/material/TextField";
 import MenuItem from "@mui/material/MenuItem";
@@ -9,6 +12,7 @@ import SubmitButton from "../../components/SubmitButton";
 import ReCaptchaCom from "../../components/ReCaptchaCom";
 
 const Contact = () => {
+    document.title = TITLE + " | Contacto";
     const { themeTatailwind } = useDarkMode();
     const baseData = {
         name: "",
@@ -141,109 +145,135 @@ const Contact = () => {
     };
 
     return (
-        <div className="flex flex-col justify-center">
-            <Typography
-                className="flex justify-center pt-1"
-                color={themeTatailwind.primary.color}
-                variant="h4"
+        <div className="flex flex-col items-center">
+            <div className="w-full">
+                <Slider />
+            </div>
+            <div
+                className={`flex flex-col w-full max-w-6xl justify-items-center ${themeTatailwind.secundary.main} rounded-lg shadow-2x p-2 m-5`}
             >
-                <b>Contacto</b>
-            </Typography>
-            <form className="flex flex-col gap-7 p-3 md:pl-14 md:pr-14">
-                <div className="flex flex-col md:flex-row justify-center gap-5">
-                    <TextField
-                        required
-                        color="info"
-                        inputProps={{ maxLength: 150 }}
-                        error={data.dataError.name}
-                        id="name"
-                        label="Nombre"
-                        variant="outlined"
-                        value={data.dataValues.name}
-                        onChange={handleChangeText}
-                    />
-                    <TextField
-                        required
-                        color="info"
-                        inputProps={{ maxLength: 240 }}
-                        error={data.dataError.email}
-                        id="email"
-                        label="Email"
-                        variant="outlined"
-                        value={data.dataValues.email}
-                        onChange={handleChangeText}
-                    />
-                    <TextField
-                        color="info"
-                        inputProps={{ maxLength: 200 }}
-                        error={data.dataError.discord}
-                        id="discord"
-                        label="Discord"
-                        variant="outlined"
-                        value={data.dataValues.discord}
-                        onChange={handleChangeText}
-                    />
+                <Typography
+                    className="flex justify-center pt-1"
+                    color={themeTatailwind.primary.color}
+                    variant="h4"
+                >
+                    <b>Contacto</b>
+                </Typography>
+                <div className="flex justify-center">
+                    <Typography
+                        component="div"
+                        variant="caption"
+                        className="max-w-xl text-justify p-3"
+                        color={themeTatailwind.primary.color}
+                    >
+                        ¡Gracias por contactarnos! Completa el formulario y te
+                        responderemos por correo electrónico lo antes posible.
+                        Proporciona detalles para una mejor atención. Podría
+                        haber demoras en la respuesta debido a la cantidad de
+                        consultas, pero nos esforzaremos por ser rápidos.
+                        ¡Esperamos resolver tus inquietudes y brindarte una
+                        excelente experiencia!
+                    </Typography>
                 </div>
-                <div className="flex justify-center gap-5">
-                    <div className="w-full md:max-w-lg">
+                <form className="flex flex-col gap-7 p-3 md:pl-14 md:pr-14">
+                    <div className="flex flex-col md:flex-row justify-center gap-5">
                         <TextField
-                            sx={{ display: "flex", width: "100%" }}
                             required
                             color="info"
-                            inputProps={{ maxLength: 200 }}
-                            error={data.dataError.reason}
-                            id="reason"
-                            label="Razon"
-                            select
+                            inputProps={{ maxLength: 150 }}
+                            error={data.dataError.name}
+                            id="name"
+                            label="Nombre"
                             variant="outlined"
-                            value={data.dataValues.reason}
-                            onChange={(e) =>
-                                handleChangeSelect(e.target.value, "reason")
-                            }
-                        >
-                            {selectReason.map((option) => (
-                                <MenuItem
-                                    key={option.value}
-                                    value={option.value}
-                                >
-                                    {option.label}
-                                </MenuItem>
-                            ))}
-                        </TextField>
+                            value={data.dataValues.name}
+                            onChange={handleChangeText}
+                        />
+                        <TextField
+                            required
+                            color="info"
+                            inputProps={{ maxLength: 240 }}
+                            error={data.dataError.email}
+                            id="email"
+                            label="Email"
+                            variant="outlined"
+                            value={data.dataValues.email}
+                            onChange={handleChangeText}
+                        />
+                        <TextField
+                            color="info"
+                            inputProps={{ maxLength: 200 }}
+                            error={data.dataError.discord}
+                            id="discord"
+                            label="Discord"
+                            variant="outlined"
+                            value={data.dataValues.discord}
+                            onChange={handleChangeText}
+                        />
                     </div>
-                </div>
-                <div>
-                    <TextField
-                        required
-                        color="info"
-                        inputProps={{ maxLength: 3800 }}
-                        error={data.dataError.message}
-                        id="message"
-                        label="Mensaje"
-                        fullWidth
-                        multiline
-                        rows={5}
-                        variant="outlined"
-                        value={data.dataValues.message}
-                        onChange={handleChangeText}
-                    />
-                </div>
+                    <div className="flex justify-center gap-5">
+                        <div className="w-full md:max-w-lg">
+                            <TextField
+                                sx={{ display: "flex", width: "100%" }}
+                                required
+                                color="info"
+                                inputProps={{ maxLength: 200 }}
+                                error={data.dataError.reason}
+                                id="reason"
+                                label="Razon"
+                                select
+                                variant="outlined"
+                                value={data.dataValues.reason}
+                                onChange={(e) =>
+                                    handleChangeSelect(e.target.value, "reason")
+                                }
+                            >
+                                {selectReason.map((option) => (
+                                    <MenuItem
+                                        key={option.value}
+                                        value={option.value}
+                                    >
+                                        {option.label}
+                                    </MenuItem>
+                                ))}
+                            </TextField>
+                        </div>
+                    </div>
+                    <div>
+                        <TextField
+                            required
+                            color="info"
+                            inputProps={{ maxLength: 3800 }}
+                            error={data.dataError.message}
+                            id="message"
+                            label="Mensaje"
+                            fullWidth
+                            multiline
+                            rows={5}
+                            variant="outlined"
+                            value={data.dataValues.message}
+                            onChange={handleChangeText}
+                        />
+                    </div>
 
-                <div className="flex items-center gap-5 flex-col">
-                    <ReCaptchaCom
-                        handleChangeSelect={handleChangeSelect}
-                        recaptchaRef={recaptchaRef}
-                        error={data.dataError.captcha}
-                    />
-                    <SubmitButton
-                        checkTextError={checkTextError}
-                        data={data.dataValues}
-                        recaptchaRef={recaptchaRef}
-                        resetForm={resetAllData}
-                        url={`${PROXY_CORS_REST_API_URL}/postContact`}
-                    />
-                </div>
-            </form>
+                    <div className="flex items-center gap-5 flex-col">
+                        <ReCaptchaCom
+                            handleChangeSelect={handleChangeSelect}
+                            recaptchaRef={recaptchaRef}
+                            error={data.dataError.captcha}
+                        />
+                        <SubmitButton
+                            checkTextError={checkTextError}
+                            data={data.dataValues}
+                            recaptchaRef={recaptchaRef}
+                            resetForm={resetAllData}
+                            url={`${PROXY_CORS_REST_API_URL}/postContact`}
+                        />
+                    </div>
+                </form>
+            </div>
+            <div className="w-full">
+                <PartnersCard />
+            </div>
         </div>
     );
 };

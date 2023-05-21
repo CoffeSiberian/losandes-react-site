@@ -125,6 +125,7 @@ const Events = () => {
                 >
                     <Typography
                         color={themeTatailwind.primary.color}
+                        className="flex justify-center p-1"
                         variant="h6"
                     >
                         <b>Proximo evento</b>
