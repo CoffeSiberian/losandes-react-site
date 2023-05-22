@@ -1,7 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import Slide from "@mui/material/Slide";
-import slide1 from "../static/img/slide_img/slide_1.jpeg";
-import slide2 from "../static/img/slide_img/slide_2.png";
+import slide1 from "../static/img/slide_img/1.jpg";
+import slide2 from "../static/img/slide_img/2.jpg";
+import slide3 from "../static/img/slide_img/3.jpg";
+import slide4 from "../static/img/slide_img/4.jpg";
+import slide5 from "../static/img/slide_img/5.jpg";
 
 const Slider = () => {
     const [slide, setSlide] = useState(slide1);
@@ -13,7 +16,7 @@ const Slider = () => {
     };
 
     useEffect(() => {
-        const slides = [slide1, slide2];
+        const slides = [slide1, slide2, slide3, slide4, slide5];
         const changeSlide = async () => {
             setAnim(false);
             if (currentSlide.current === slides.length) {
@@ -34,7 +37,7 @@ const Slider = () => {
     }, []);
 
     return (
-        <div className="flex relative max-h-64 h-auto max-w-full rounded-b-2xl justify-center border-b-4 overflow-hidden border-b-amber-500 m-2">
+        <div className="flex relative max-h-96 h-auto max-w-full rounded-b-2xl justify-center border-b-4 overflow-hidden border-b-amber-500 m-2">
             <Slide direction="left" in={anim}>
                 <img
                     className="object-cover object-center rounded-b-2xl w-full drop-shadow-2xl"
