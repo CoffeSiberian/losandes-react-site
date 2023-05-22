@@ -72,15 +72,22 @@ const News = () => {
             newListCopy = newListCopy.slice(startIndex, endIndex);
             return newListCopy.map((event) => {
                 return (
-                    <NewCard
-                        key={event.id}
-                        id={event.id}
-                        title={event.title}
-                        content_summary={event.content_summary}
-                        author={event.author}
-                        published_at={event.published_at}
-                        pinned={event.pinned}
-                    />
+                    <div
+                        key={event.id + "div1"}
+                        className="flex justify-center"
+                    >
+                        <div key={event.id + "div2"} className="flex max-w-lg">
+                            <NewCard
+                                key={event.id}
+                                id={event.id}
+                                title={event.title}
+                                content_summary={event.content_summary}
+                                author={event.author}
+                                published_at={event.published_at}
+                                pinned={event.pinned}
+                            />
+                        </div>
+                    </div>
                 );
             });
         }
@@ -108,18 +115,30 @@ const News = () => {
                             <div className="grid md:grid-cols-3">
                                 {pinnedNews.map((event) => {
                                     return (
-                                        <NewCard
-                                            id={event.id}
-                                            key={event.id}
-                                            title={event.title}
-                                            content_summary={
-                                                event.content_summary
-                                            }
-                                            author={event.author}
-                                            published_at={event.published_at}
-                                            pinned={event.pinned}
-                                            url={`https://truckersmp.com/`}
-                                        />
+                                        <div
+                                            key={event.id + "div1"}
+                                            className="flex justify-center"
+                                        >
+                                            <div
+                                                key={event.id + "div2"}
+                                                className="flex max-w-lg"
+                                            >
+                                                <NewCard
+                                                    id={event.id}
+                                                    key={event.id}
+                                                    title={event.title}
+                                                    content_summary={
+                                                        event.content_summary
+                                                    }
+                                                    author={event.author}
+                                                    published_at={
+                                                        event.published_at
+                                                    }
+                                                    pinned={event.pinned}
+                                                    url={`https://truckersmp.com/`}
+                                                />
+                                            </div>
+                                        </div>
                                     );
                                 })}
                             </div>

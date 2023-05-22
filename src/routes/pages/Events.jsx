@@ -96,19 +96,26 @@ const Events = () => {
                     return nextEvent();
                 }
                 return (
-                    <EventCard
-                        key={event.id}
-                        img={event.banner}
-                        rute_img={event.map}
-                        description={event.description}
-                        name={event.name}
-                        date={event.start_at}
-                        game={event.game}
-                        server={event.server.name}
-                        atendence={event.attendances.confirmed}
-                        atendenceVtc={event.attendances.vtcs}
-                        url={`https://truckersmp.com/${event.url}`}
-                    />
+                    <div
+                        key={event.id + "div1"}
+                        className="flex justify-center"
+                    >
+                        <div key={event.id + "div2"} className="flex max-w-xl">
+                            <EventCard
+                                key={event.id}
+                                img={event.banner}
+                                rute_img={event.map}
+                                description={event.description}
+                                name={event.name}
+                                date={event.start_at}
+                                game={event.game}
+                                server={event.server.name}
+                                atendence={event.attendances.confirmed}
+                                atendenceVtc={event.attendances.vtcs}
+                                url={`https://truckersmp.com/${event.url}`}
+                            />
+                        </div>
+                    </div>
                 );
             });
         }
@@ -119,30 +126,32 @@ const Events = () => {
         if (FilterEvents && FilterEvents.length > 0) {
             let event = FilterEvents[0];
             return (
-                <div
-                    key={event.id}
-                    className="flex flex-col rounded-lg border-2 border-yellow-500 md:m-1"
-                >
-                    <Typography
-                        color={themeTatailwind.primary.color}
-                        className="flex justify-center p-1"
-                        variant="h6"
+                <div key={event.id + "div1"} className="flex justify-center">
+                    <div
+                        key={event.id + "div2"}
+                        className="flex flex-col max-w-xl rounded-lg border-2 border-yellow-500 md:m-1"
                     >
-                        <b>Proximo evento</b>
-                    </Typography>
-                    <EventCard
-                        key={event.id}
-                        img={event.banner}
-                        rute_img={event.map}
-                        description={event.description}
-                        name={event.name}
-                        date={event.start_at}
-                        game={event.game}
-                        server={event.server.name}
-                        atendence={event.attendances.confirmed}
-                        atendenceVtc={event.attendances.vtcs}
-                        url={`https://truckersmp.com/${event.url}`}
-                    />
+                        <Typography
+                            color={themeTatailwind.primary.color}
+                            className="flex justify-center p-1"
+                            variant="h6"
+                        >
+                            <b>Proximo evento</b>
+                        </Typography>
+                        <EventCard
+                            key={event.id}
+                            img={event.banner}
+                            rute_img={event.map}
+                            description={event.description}
+                            name={event.name}
+                            date={event.start_at}
+                            game={event.game}
+                            server={event.server.name}
+                            atendence={event.attendances.confirmed}
+                            atendenceVtc={event.attendances.vtcs}
+                            url={`https://truckersmp.com/${event.url}`}
+                        />
+                    </div>
                 </div>
             );
         }
