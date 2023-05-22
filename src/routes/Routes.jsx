@@ -6,7 +6,6 @@ import News from "./pages/News";
 import NewView from "./pages/NewView";
 import Staff from "./pages/Staff";
 import Contact from "./pages/Contact";
-import Apply from "./pages/Apply";
 import HallOfFame from "./pages/HallOfFame";
 import Employees from "./pages/Employees";
 import Notfound from "./pages/Notfound";
@@ -66,15 +65,6 @@ const RoutePage = () => {
                         <>
                             <Header />
                             <Contact />
-                        </>
-                    }
-                />
-                <Route
-                    path="/apply"
-                    element={
-                        <>
-                            <Header />
-                            <Apply />
                         </>
                     }
                 />

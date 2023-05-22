@@ -61,7 +61,7 @@ const Header = () => {
         {
             icon: HowToRegRoundedIcon,
             text: "Postularse",
-            url: "/apply",
+            url: "/news/29574",
         },
         {
             icon: AlternateEmailRoundedIcon,

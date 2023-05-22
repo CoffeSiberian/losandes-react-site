@@ -48,7 +48,7 @@ const JoinCard = () => {
                                 <Button
                                     startIcon={<HowToRegRoundedIcon />}
                                     variant="contained"
-                                    onClick={() => navigate("/apply")}
+                                    onClick={() => navigate("/news/29574")}
                                 >
                                     Postularse
                                 </Button>

@@ -27,6 +27,7 @@ const NewView = () => {
     const { newId } = useParams();
 
     const loaded = useRef(false);
+    const oldId = useRef(newId);
     const [NewResponse, setNewResponse] = useState(false);
     const { themeTatailwind } = useDarkMode();
     const navigate = useNavigate();
@@ -53,12 +54,20 @@ const NewView = () => {
         }
     };
 
+    const idChange = () => {
+        if (oldId.current !== newId) {
+            getNews();
+            oldId.current = newId;
+        }
+    };
+
     useEffect(() => {
+        idChange();
         if (!loaded.current) {
             getNews();
             loaded.current = true;
         } // eslint-disable-next-line
-    }, []);
+    }, [newId]);
 
     const renderInfo = () => {
         document.title = NewResponse
