@@ -9,7 +9,7 @@ import Button from "@mui/material/Button";
 import OpenInNewRoundedIcon from "@mui/icons-material/OpenInNewRounded";
 import defaultavatar from "../static/img/defaultavatar.png";
 
-import { PROXY_CORS_URL_GET, TMP_API_URL } from "../helpers/configs";
+import { REST_API_URL } from "../helpers/configs";
 
 const MemberCard = ({ id, username, roleName, dateJoin, imgLink }) => {
     const [Response, setResponse] = useState(false);
@@ -18,21 +18,15 @@ const MemberCard = ({ id, username, roleName, dateJoin, imgLink }) => {
 
     // eslint-disable-next-line
     const [loading, error, succes, bodyResponse] = useFetch(
-        `${PROXY_CORS_URL_GET}`,
-        "POST",
+        `${REST_API_URL}/getMemberInfo/${id}`,
+        "GET",
         {
             "Content-Type": "application/json",
         }
     );
 
     const getProfileMember = async () => {
-        let bodyQuery = {
-            url: `${TMP_API_URL}/player/${id}`,
-            headers: {
-                "Content-Type": "application/json",
-            },
-        };
-        let fetchResponse = await bodyResponse(bodyQuery);
+        const fetchResponse = await bodyResponse();
         if (fetchResponse.status === 200) {
             setResponse((await fetchResponse.json()).response);
         }

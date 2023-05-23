@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import { Typography } from "@mui/material";
 import { useDarkMode } from "../../hooks/contex/DarkModeContex";
-import { PROXY_CORS_REST_API_URL } from "../../helpers/configs";
+import { REST_API_URL } from "../../helpers/configs";
 import { TITLE } from "../../helpers/configs";
 import Slider from "../../components/Slider";
 import PartnersCard from "../../components/PartnersCard";
@@ -266,7 +266,7 @@ const Contact = () => {
                             data={data.dataValues}
                             recaptchaRef={recaptchaRef}
                             resetForm={resetAllData}
-                            url={`${PROXY_CORS_REST_API_URL}/postContact`}
+                            url={`${REST_API_URL}/postContact`}
                         />
                     </div>
                 </form>

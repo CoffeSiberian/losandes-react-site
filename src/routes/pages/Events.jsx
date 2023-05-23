@@ -9,12 +9,7 @@ import EmptyData from "../../components/EmptyData";
 import ErrorData from "../../components/ErrorData";
 import ModalLoading from "../../components/ModalLoading";
 
-import {
-    TITLE,
-    PROXY_CORS_URL_GET,
-    TMP_API_URL,
-    COMPANY_ID,
-} from "../../helpers/configs";
+import { TITLE, REST_API_URL } from "../../helpers/configs";
 
 const Events = () => {
     document.title = TITLE + " | Eventos";
@@ -38,21 +33,15 @@ const Events = () => {
 
     // eslint-disable-next-line
     const [loading, error, succes, bodyResponse] = useFetch(
-        `${PROXY_CORS_URL_GET}`,
-        "POST",
+        `${REST_API_URL}/getEvents/`,
+        "GET",
         {
             "Content-Type": "application/json",
         }
     );
 
     const getEvents = async () => {
-        let bodyQuery = {
-            url: `${TMP_API_URL}/vtc/${COMPANY_ID}/events`,
-            headers: {
-                "Content-Type": "application/json",
-            },
-        };
-        let fetchResponse = await bodyResponse(bodyQuery);
+        const fetchResponse = await bodyResponse();
         if (fetchResponse.status === 200) {
             EventsResponse.current = await fetchResponse.json();
             orderEvents();

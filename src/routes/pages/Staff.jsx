@@ -9,9 +9,7 @@ import ModalLoading from "../../components/ModalLoading";
 
 import {
     TITLE,
-    PROXY_CORS_URL_GET,
-    TMP_API_URL,
-    COMPANY_ID,
+    REST_API_URL,
     STAFF_IDS,
     STAFF_COLORS,
 } from "../../helpers/configs";
@@ -25,21 +23,15 @@ const Staff = () => {
 
     // eslint-disable-next-line
     const [loading, error, succes, bodyResponse] = useFetch(
-        `${PROXY_CORS_URL_GET}`,
-        "POST",
+        `${REST_API_URL}/getMembers/`,
+        "GET",
         {
             "Content-Type": "application/json",
         }
     );
 
     const getMembers = async () => {
-        let bodyQuery = {
-            url: `${TMP_API_URL}/vtc/${COMPANY_ID}/members`,
-            headers: {
-                "Content-Type": "application/json",
-            },
-        };
-        let fetchResponse = await bodyResponse(bodyQuery);
+        const fetchResponse = await bodyResponse();
         if (fetchResponse.status === 200) {
             setResponse((await fetchResponse.json()).response.members);
         }

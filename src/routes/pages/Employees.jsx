@@ -7,12 +7,7 @@ import { Typography } from "@mui/material";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import ModalLoading from "../../components/ModalLoading";
-import {
-    TITLE,
-    PROXY_CORS_URL_GET,
-    TMP_API_URL,
-    COMPANY_ID,
-} from "../../helpers/configs";
+import { TITLE, REST_API_URL } from "../../helpers/configs";
 
 const Employees = () => {
     document.title = TITLE + " | Miembros";
@@ -23,8 +18,8 @@ const Employees = () => {
 
     // eslint-disable-next-line
     const [loading, error, succes, bodyResponse] = useFetch(
-        `${PROXY_CORS_URL_GET}`,
-        "POST",
+        `${REST_API_URL}/getMembers/`,
+        "GET",
         {
             "Content-Type": "application/json",
         }
@@ -41,13 +36,7 @@ const Employees = () => {
     const endIndex = startIndex + itemsPerPage;
 
     const getMembers = async () => {
-        let bodyQuery = {
-            url: `${TMP_API_URL}/vtc/${COMPANY_ID}/members`,
-            headers: {
-                "Content-Type": "application/json",
-            },
-        };
-        let fetchResponse = await bodyResponse(bodyQuery);
+        const fetchResponse = await bodyResponse();
         if (fetchResponse.status === 200) {
             setResponse((await fetchResponse.json()).response.members);
         }

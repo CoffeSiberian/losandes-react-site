@@ -9,12 +9,7 @@ import EmptyData from "../../components/EmptyData";
 import ErrorData from "../../components/ErrorData";
 import ModalLoading from "../../components/ModalLoading";
 
-import {
-    TITLE,
-    PROXY_CORS_URL_GET,
-    TMP_API_URL,
-    COMPANY_ID,
-} from "../../helpers/configs";
+import { TITLE, REST_API_URL } from "../../helpers/configs";
 
 const News = () => {
     document.title = TITLE + " | Noticias";
@@ -35,21 +30,15 @@ const News = () => {
 
     // eslint-disable-next-line
     const [loading, error, succes, bodyResponse] = useFetch(
-        `${PROXY_CORS_URL_GET}`,
-        "POST",
+        `${REST_API_URL}/getNews/`,
+        "GET",
         {
             "Content-Type": "application/json",
         }
     );
 
     const getNews = async () => {
-        let bodyQuery = {
-            url: `${TMP_API_URL}/vtc/${COMPANY_ID}/news`,
-            headers: {
-                "Content-Type": "application/json",
-            },
-        };
-        let fetchResponse = await bodyResponse(bodyQuery);
+        const fetchResponse = await bodyResponse();
         if (fetchResponse.status === 200) {
             setNewsResponse((await fetchResponse.json()).response.news);
         }

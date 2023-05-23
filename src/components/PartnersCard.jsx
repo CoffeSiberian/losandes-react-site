@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useDarkMode } from "../hooks/contex/DarkModeContex";
 import { Typography } from "@mui/material";
-import { PARTNERS, PROXY_CORS_REST_API_URL } from "../helpers/configs";
+import { PARTNERS, REST_API_URL } from "../helpers/configs";
 import Button from "@mui/material/Button";
 
 // icons
@@ -10,7 +10,7 @@ import HandshakeRoundedIcon from "@mui/icons-material/HandshakeRounded";
 const PartnersCard = () => {
     const { themeTatailwind } = useDarkMode();
     const navigate = useNavigate();
-    const urlImage = `${PROXY_CORS_REST_API_URL}/getPartnerLogo/`;
+    const urlImage = `${REST_API_URL}/getPartnerLogo/`;
 
     const renderPartners = () => {
         return PARTNERS.map((partner, index) => {

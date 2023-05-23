@@ -1,9 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import {
-    TITLE,
-    HALL_OF_FAME,
-    PROXY_CORS_REST_API_URL,
-} from "../../helpers/configs";
+import { TITLE, HALL_OF_FAME, REST_API_URL } from "../../helpers/configs";
 import { useDarkMode } from "../../hooks/contex/DarkModeContex";
 import { Typography } from "@mui/material";
 import Divider from "@mui/material/Divider";
@@ -22,7 +18,7 @@ const HallOfFame = () => {
 
     // eslint-disable-next-line
     const [loading, error, succes, bodyResponse] = useFetch(
-        `${PROXY_CORS_REST_API_URL}/getHallOfFame`,
+        `${REST_API_URL}/getHallOfFame`,
         "GET",
         {
             "Content-Type": "application/json",
