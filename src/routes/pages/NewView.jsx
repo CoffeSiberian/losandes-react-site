@@ -141,15 +141,15 @@ const NewView = () => {
         if (error) {
             return <ErrorData msj={"Error al cargar la noticia"} />;
         } else if (!loading) {
-            return renderPage();
+            return <div className="viewNew">{renderPage()}</div>;
         }
     };
 
     return (
-        <div className="viewNew">
-            <ModalLoading open={loading} />
+        <>
+            {<ModalLoading open={loading} />}
             {checkError()}
-        </div>
+        </>
     );
 };
 

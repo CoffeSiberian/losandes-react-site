@@ -1,10 +1,10 @@
 import { Typography } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
+import { useDarkMode } from "../../hooks/contex/DarkModeContex";
 import NewCard from "../../components/NewCard";
 import useFetch from "../../hooks/useFetch";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
-import { useDarkMode } from "../../hooks/contex/DarkModeContex";
 import EmptyData from "../../components/EmptyData";
 import ErrorData from "../../components/ErrorData";
 import ModalLoading from "../../components/ModalLoading";
@@ -14,6 +14,7 @@ import { TITLE, REST_API_URL } from "../../helpers/configs";
 const News = () => {
     document.title = TITLE + " | Noticias";
     const loaded = useRef(false);
+    const EmptyDataStatus = useRef(false);
     const totalItems = useRef(0);
     const [NewsResponse, setNewsResponse] = useState(false);
     const { themeTatailwind } = useDarkMode();
@@ -53,6 +54,7 @@ const News = () => {
 
     const renderNews = () => {
         if (NewsResponse && NewsResponse.length > 0) {
+            EmptyDataStatus.current = false;
             totalItems.current = NewsResponse.length;
             let newListCopy = JSON.parse(JSON.stringify(NewsResponse));
             newListCopy.sort((a, b) => {
@@ -80,7 +82,8 @@ const News = () => {
                 );
             });
         }
-        return <EmptyData msj={"No se encontraron noticias"} />;
+        EmptyDataStatus.current = true;
+        return <></>;
     };
 
     const renderPinnedNews = () => {
@@ -153,19 +156,25 @@ const News = () => {
                     <b>Lo ultimo</b>
                 </Typography>
                 <div className="grid md:grid-cols-3">{renderNews()}</div>
-                <div className="flex justify-center pb-5">
-                    <Stack spacing={2}>
-                        <Pagination
-                            count={Math.ceil(totalItems.current / itemsPerPage)}
-                            page={page}
-                            onChange={(event, page) =>
-                                handleChange(event, page)
-                            }
-                            variant="outlined"
-                            shape="rounded"
-                        />
-                    </Stack>
-                </div>
+                {EmptyDataStatus.current && !error && !loading ? (
+                    <></>
+                ) : (
+                    <div className="flex justify-center pb-5">
+                        <Stack spacing={2}>
+                            <Pagination
+                                count={Math.ceil(
+                                    totalItems.current / itemsPerPage
+                                )}
+                                page={page}
+                                onChange={(event, page) =>
+                                    handleChange(event, page)
+                                }
+                                variant="outlined"
+                                shape="rounded"
+                            />
+                        </Stack>
+                    </div>
+                )}
             </>
         );
     };
@@ -187,6 +196,11 @@ const News = () => {
             </div>
             <ModalLoading open={loading} />
             {checkError()}
+            {EmptyDataStatus.current && !error && !loading ? (
+                <EmptyData msj={"No hay noticias"} />
+            ) : (
+                <></>
+            )}
         </>
     );
 };

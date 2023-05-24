@@ -1,10 +1,10 @@
 import { Typography } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
+import { useDarkMode } from "../../hooks/contex/DarkModeContex";
 import EventCard from "../../components/EventCard";
 import useFetch from "../../hooks/useFetch";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
-import { useDarkMode } from "../../hooks/contex/DarkModeContex";
 import EmptyData from "../../components/EmptyData";
 import ErrorData from "../../components/ErrorData";
 import ModalLoading from "../../components/ModalLoading";
@@ -15,6 +15,7 @@ const Events = () => {
     document.title = TITLE + " | Eventos";
     const loaded = useRef(false);
     const EventsResponse = useRef(false);
+    const EmptyDataStatus = useRef(false);
 
     const totalItems = useRef(0);
     const [FilterEvents, setFilterEvents] = useState(false);
@@ -78,6 +79,7 @@ const Events = () => {
 
     const renderEvents = () => {
         if (FilterEvents && FilterEvents.length > 0) {
+            EmptyDataStatus.current = false;
             totalItems.current = FilterEvents.length;
             const eventListCopy = FilterEvents.slice(startIndex, endIndex);
             return eventListCopy.map((event, index) => {
@@ -108,7 +110,8 @@ const Events = () => {
                 );
             });
         }
-        return <EmptyData msj={"No hay eventos próximos"} />;
+        EmptyDataStatus.current = true;
+        return <></>;
     };
 
     const nextEvent = () => {
@@ -146,31 +149,36 @@ const Events = () => {
         }
         return <></>;
     };
-
     const renderPage = () => {
         return (
             <>
                 <div className="grid md:grid-cols-3">{renderEvents()}</div>
-                <div className="flex justify-center pb-5">
-                    <Stack spacing={2}>
-                        <Pagination
-                            count={Math.ceil(totalItems.current / itemsPerPage)}
-                            page={page}
-                            onChange={(event, page) =>
-                                handleChange(event, page)
-                            }
-                            variant="outlined"
-                            shape="rounded"
-                        />
-                    </Stack>
-                </div>
+                {EmptyDataStatus.current && !error && !loading ? (
+                    <></>
+                ) : (
+                    <div className="flex justify-center pb-5">
+                        <Stack spacing={2}>
+                            <Pagination
+                                count={Math.ceil(
+                                    totalItems.current / itemsPerPage
+                                )}
+                                page={page}
+                                onChange={(event, page) =>
+                                    handleChange(event, page)
+                                }
+                                variant="outlined"
+                                shape="rounded"
+                            />
+                        </Stack>
+                    </div>
+                )}
             </>
         );
     };
 
     const checkError = () => {
         if (error) {
-            return <ErrorData msj={"Error al cargar las noticias"} />;
+            return <ErrorData msj={"Error al cargar los eventos"} />;
         } else if (!loading) {
             return renderPage();
         }
@@ -183,8 +191,14 @@ const Events = () => {
                     <b>Eventos oficiales</b>
                 </Typography>
             </div>
+
             <ModalLoading open={loading} />
             {checkError()}
+            {EmptyDataStatus.current && !error && !loading ? (
+                <EmptyData msj={"No hay eventos próximos"} />
+            ) : (
+                <></>
+            )}
         </>
     );
 };
