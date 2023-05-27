@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import ScrollTop from "./ScrollTop";
 import Header from "../components/Header";
 import Home from "./pages/Home";
 import Events from "./pages/Events";
@@ -13,6 +14,7 @@ import Notfound from "./pages/Notfound";
 const RoutePage = () => {
     return (
         <Router>
+            <ScrollTop />
             <Routes>
                 <Route
                     path="/"
