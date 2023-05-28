@@ -3,6 +3,7 @@ import { useDarkMode } from "../hooks/contex/DarkModeContex";
 import { Typography } from "@mui/material";
 import { PARTNERS, REST_API_URL } from "../helpers/configs";
 import Button from "@mui/material/Button";
+import Divider from "@mui/material/Divider";
 
 // icons
 import HandshakeRoundedIcon from "@mui/icons-material/HandshakeRounded";
@@ -38,10 +39,14 @@ const PartnersCard = () => {
                 <div className="flex flex-col items-center text-justify w-full gap-5 pb-2">
                     <Typography
                         color={themeTatailwind.primary.color}
+                        component="div"
+                        className="flex items-center justify-center gap-2"
                         variant="h4"
                     >
+                        <HandshakeRoundedIcon fontSize="large" />
                         <b>Partners oficiales</b>
                     </Typography>
+                    <Divider className="w-full" component="div" />
                     <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 justify-items-center gap-4">
                         {renderPartners()}
                     </div>
