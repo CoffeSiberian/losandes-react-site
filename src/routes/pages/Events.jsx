@@ -103,7 +103,7 @@ const Events = () => {
                                 server={event.server.name}
                                 atendence={event.attendances.confirmed}
                                 atendenceVtc={event.attendances.vtcs}
-                                url={`https://truckersmp.com/${event.url}`}
+                                url={`https://truckersmp.com${event.url}`}
                             />
                         </div>
                     </div>
@@ -141,7 +141,7 @@ const Events = () => {
                             server={event.server.name}
                             atendence={event.attendances.confirmed}
                             atendenceVtc={event.attendances.vtcs}
-                            url={`https://truckersmp.com/${event.url}`}
+                            url={`https://truckersmp.com${event.url}`}
                         />
                     </div>
                 </div>

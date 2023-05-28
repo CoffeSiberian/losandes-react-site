@@ -31,23 +31,28 @@ const PartnersCard = () => {
         });
     };
     return (
-        <div
-            className={`${themeTatailwind.secundary.main} rounded-lg shadow-2xl m-4 p-4`}
-        >
-            <div className="flex flex-col items-center text-justify w-full gap-5 pb-2">
-                <Typography color={themeTatailwind.primary.color} variant="h4">
-                    <b>Partners oficiales</b>
-                </Typography>
-                <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 2xl:grid-cols-10 justify-items-center gap-4">
-                    {renderPartners()}
+        <div className="flex justify-center mb-10">
+            <div
+                className={`${themeTatailwind.secundary.main} max-w-7xl w-full rounded-lg shadow-2xl m-5 p-5`}
+            >
+                <div className="flex flex-col items-center text-justify w-full gap-5 pb-2">
+                    <Typography
+                        color={themeTatailwind.primary.color}
+                        variant="h4"
+                    >
+                        <b>Partners oficiales</b>
+                    </Typography>
+                    <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 justify-items-center gap-4">
+                        {renderPartners()}
+                    </div>
+                    <Button
+                        endIcon={<HandshakeRoundedIcon />}
+                        variant="contained"
+                        onClick={() => navigate("/news/31248")}
+                    >
+                        ¡Hazte Partner!
+                    </Button>
                 </div>
-                <Button
-                    endIcon={<HandshakeRoundedIcon />}
-                    variant="contained"
-                    onClick={() => navigate("/news/31248")}
-                >
-                    ¡Hazte Partner!
-                </Button>
             </div>
         </div>
     );
