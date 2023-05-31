@@ -4,11 +4,13 @@ import { useDarkMode } from "../hooks/contex/DarkModeContex";
 import useFetch from "../hooks/useFetch";
 import { REST_API_URL } from "../helpers/configs";
 import Divider from "@mui/material/Divider";
+import SmallMemberCard from "./SmallMemberCard";
 
 // icons
 import AssignmentIndRoundedIcon from "@mui/icons-material/AssignmentIndRounded";
 import QueryStatsRoundedIcon from "@mui/icons-material/QueryStatsRounded";
 import LocalShippingRoundedIcon from "@mui/icons-material/LocalShippingRounded";
+import PersonAddRoundedIcon from "@mui/icons-material/PersonAddRounded";
 
 const Statistics = () => {
     const loaded = useRef(false);
@@ -47,74 +49,108 @@ const Statistics = () => {
     }, []);
 
     const renderStatistics = () => {
-        const classStyle = ` ${themeTatailwind.secundary.main_contrast} w-full max-w-xs items-center border-2 border-green-600 rounded-xl gap-2 p-4`;
+        const classStyle = `flex flex-col ${themeTatailwind.secundary.main_contrast} shadow-2xl w-full max-w-xs items-center border-2 border-green-600 rounded-xl gap-2 p-4`;
         return (
-            <div className="flex flex-col md:flex-row gap-5 items-center md:justify-center">
-                <div className={classStyle}>
-                    <div className="flex flex-col items-center gap-1">
-                        <Typography color={themeTatailwind.primary.color}>
-                            <LocalShippingRoundedIcon fontSize="medium" />
-                        </Typography>
-                        <Typography
-                            variant="h6"
-                            color={themeTatailwind.primary.color}
-                        >
-                            N° de Conductores
-                        </Typography>
+            <div className="flex flex-col gap-5">
+                <div className="flex flex-col md:flex-row gap-5 items-center md:justify-center">
+                    <div className={classStyle}>
+                        <div className="flex flex-col items-center gap-1">
+                            <Typography color={themeTatailwind.primary.color}>
+                                <PersonAddRoundedIcon fontSize="medium" />
+                            </Typography>
+                            <Typography
+                                variant="h6"
+                                color={themeTatailwind.primary.color}
+                            >
+                                Ultimo recluta en la VTC
+                            </Typography>
+                        </div>
+                        <Divider className="w-full" component="div" />
+                        {StatisticsResponse.last_member !== null ? (
+                            <SmallMemberCard
+                                username={StatisticsResponse.last_member.name}
+                                imgLink={StatisticsResponse.last_member.avatar}
+                                id={StatisticsResponse.last_member.id}
+                            />
+                        ) : (
+                            <Typography
+                                color={themeTatailwind.primary.color}
+                                variant="caption"
+                                className="text-center"
+                                component="div"
+                            >
+                                No se encontró al nuevo recluta 😢
+                            </Typography>
+                        )}
                     </div>
-                    <Divider />
-                    <Typography
-                        color={themeTatailwind.primary.color}
-                        variant="h5"
-                        className="text-center"
-                        component="div"
-                    >
-                        <b>{StatisticsResponse.vtc_members}</b>
-                    </Typography>
                 </div>
-                <div className={classStyle}>
-                    <div className="flex flex-col items-center gap-1">
-                        <Typography color={themeTatailwind.primary.color}>
-                            {discordSvg}
-                        </Typography>
+                <div className="flex flex-col md:flex-row gap-5 items-center md:justify-center">
+                    <div className={classStyle}>
+                        <div className="flex flex-col items-center gap-1">
+                            <Typography color={themeTatailwind.primary.color}>
+                                <LocalShippingRoundedIcon fontSize="medium" />
+                            </Typography>
+                            <Typography
+                                variant="h6"
+                                color={themeTatailwind.primary.color}
+                            >
+                                N° de Conductores
+                            </Typography>
+                        </div>
+                        <Divider className="w-full" component="div" />
                         <Typography
-                            variant="h6"
                             color={themeTatailwind.primary.color}
+                            variant="h5"
+                            className="text-center"
+                            component="div"
                         >
-                            Miembros en Discord
+                            <b>{StatisticsResponse.vtc_members}</b>
                         </Typography>
                     </div>
-                    <Divider />
-                    <Typography
-                        color={themeTatailwind.primary.color}
-                        variant="h5"
-                        className="text-center"
-                        component="div"
-                    >
-                        <b>{StatisticsResponse.discord_members}</b>
-                    </Typography>
-                </div>
-                <div className={classStyle}>
-                    <div className="flex flex-col items-center gap-1">
-                        <Typography color={themeTatailwind.primary.color}>
-                            <AssignmentIndRoundedIcon fontSize="medium" />
-                        </Typography>
+                    <div className={classStyle}>
+                        <div className="flex flex-col items-center gap-1">
+                            <Typography color={themeTatailwind.primary.color}>
+                                {discordSvg}
+                            </Typography>
+                            <Typography
+                                variant="h6"
+                                color={themeTatailwind.primary.color}
+                            >
+                                Miembros en Discord
+                            </Typography>
+                        </div>
+                        <Divider className="w-full" component="div" />
                         <Typography
-                            variant="h6"
                             color={themeTatailwind.primary.color}
+                            variant="h5"
+                            className="text-center"
+                            component="div"
                         >
-                            Staff Activo
+                            <b>{StatisticsResponse.discord_members}</b>
                         </Typography>
                     </div>
-                    <Divider />
-                    <Typography
-                        color={themeTatailwind.primary.color}
-                        variant="h5"
-                        className="text-center"
-                        component="div"
-                    >
-                        <b>{StatisticsResponse.staff_members}</b>
-                    </Typography>
+                    <div className={classStyle}>
+                        <div className="flex flex-col items-center gap-1">
+                            <Typography color={themeTatailwind.primary.color}>
+                                <AssignmentIndRoundedIcon fontSize="medium" />
+                            </Typography>
+                            <Typography
+                                variant="h6"
+                                color={themeTatailwind.primary.color}
+                            >
+                                Staff Activo
+                            </Typography>
+                        </div>
+                        <Divider className="w-full" component="div" />
+                        <Typography
+                            color={themeTatailwind.primary.color}
+                            variant="h5"
+                            className="text-center"
+                            component="div"
+                        >
+                            <b>{StatisticsResponse.staff_members}</b>
+                        </Typography>
+                    </div>
                 </div>
             </div>
         );
@@ -134,7 +170,18 @@ const Statistics = () => {
                     <b>Estadisticas</b>
                 </Typography>
                 <Divider />
-                {StatisticsResponse !== undefined ? renderStatistics() : <></>}
+                {StatisticsResponse !== undefined ? (
+                    renderStatistics()
+                ) : (
+                    <Typography
+                        color={themeTatailwind.primary.color}
+                        variant="caption"
+                        className="text-center"
+                        component="div"
+                    >
+                        No se encontraron estadisticas 😢
+                    </Typography>
+                )}
             </div>
         </div>
     );
