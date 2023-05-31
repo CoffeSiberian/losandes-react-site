@@ -49,7 +49,7 @@ const Statistics = () => {
     const renderStatistics = () => {
         const classStyle = ` ${themeTatailwind.secundary.main_contrast} w-full max-w-xs items-center border-2 border-green-600 rounded-xl gap-2 p-4`;
         return (
-            <div className="flex flex-col md:flex-row gap-5 justify-center">
+            <div className="flex flex-col md:flex-row gap-5 items-center md:justify-center">
                 <div className={classStyle}>
                     <div className="flex flex-col items-center gap-1">
                         <Typography color={themeTatailwind.primary.color}>
