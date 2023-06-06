@@ -10,6 +10,7 @@ import Contact from "./pages/Contact";
 import HallOfFame from "./pages/HallOfFame";
 import Employees from "./pages/Employees";
 import Notfound from "./pages/Notfound";
+import Feedback from "../components/Feedback";
 
 const RoutePage = () => {
     return (
@@ -88,6 +89,7 @@ const RoutePage = () => {
                         </>
                     }
                 />
+                <Route path="/feedback" element={<Feedback />} />
                 <Route
                     path="*"
                     element={
