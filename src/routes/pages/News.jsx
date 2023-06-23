@@ -67,7 +67,10 @@ const News = () => {
                         key={event.id + "div1"}
                         className="flex justify-center"
                     >
-                        <div key={event.id + "div2"} className="flex max-w-lg">
+                        <div
+                            key={event.id + "div2"}
+                            className="flex max-w-lg w-full"
+                        >
                             <NewCard
                                 key={event.id}
                                 id={event.id}

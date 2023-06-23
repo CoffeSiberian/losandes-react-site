@@ -1,25 +1,31 @@
 .viewNew {
     img {
         @apply object-cover rounded-lg drop-shadow-lg;
-      }
-      
-      p:not(:has(img)) {
+    }
+
+    p:not(:has(img)) {
         @apply flex flex-col;
-      }
+    }
 
-      p:has(> img):first-child {
-        @apply flex justify-center;
-      }
+    p:has(> img):first-child {
+        @apply flex flex-col justify-center;
+    }
 
-      p:has(> a > img) {
+    p:has(> a > img) {
         @apply flex justify-center;
-      }
+    }
 
     a {
-          @apply text-blue-600;
-      }
+        @apply text-blue-600;
+    }
 
-    h1, h2, h3, h4, h5, h6, strong {
-          @apply pt-4 pb-4;
-      }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    strong {
+        @apply pt-4 pb-4;
+    }
 }

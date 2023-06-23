@@ -25,7 +25,7 @@ const NewCard = ({
     const { themeTatailwind } = useDarkMode();
 
     return (
-        <div className="flex relative">
+        <div className="flex relative w-full">
             {pinned ? (
                 <div className="flex absolute -rotate-45">
                     <PushPinRoundedIcon color={"info"} fontSize={"large"} />
