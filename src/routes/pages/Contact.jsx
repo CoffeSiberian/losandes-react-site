@@ -204,7 +204,7 @@ const Contact = () => {
                             inputProps={{ maxLength: 200 }}
                             error={data.dataError.discord}
                             id="discord"
-                            label="Discord"
+                            label="Discord (opcional)"
                             variant="outlined"
                             value={data.dataValues.discord}
                             onChange={handleChangeText}
