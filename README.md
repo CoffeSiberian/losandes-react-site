@@ -43,10 +43,12 @@ REACT_APP_CAPTCHA_KEY=recaptcha_v2_site_key
     "hall_of_fame": [
         {
             "rol_id": "0",
+            "featured": false,
             "rol_name": "name"
         },
         {
             "rol_id": "1",
+            "featured": false,
             "rol_name": "name"
         }
     ]
