@@ -3,7 +3,7 @@ import { Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import HowToRegRoundedIcon from "@mui/icons-material/HowToRegRounded";
 import Button from "@mui/material/Button";
-import my_welcome from "../static/img/my_welcome.jpeg";
+import my_welcome from "../static/img/my_welcome.webp";
 
 const JoinCard = () => {
     const { themeTatailwind } = useDarkMode();

@@ -1,10 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import Slide from "@mui/material/Slide";
-import slide1 from "../static/img/slide_img/1.jpg";
-import slide2 from "../static/img/slide_img/2.jpg";
-import slide3 from "../static/img/slide_img/3.jpg";
-import slide4 from "../static/img/slide_img/4.jpg";
-import slide5 from "../static/img/slide_img/5.jpg";
+import slide1 from "../static/img/slide_img/1.webp";
+import slide2 from "../static/img/slide_img/2.webp";
+import slide3 from "../static/img/slide_img/3.webp";
+import slide4 from "../static/img/slide_img/4.webp";
+import slide5 from "../static/img/slide_img/5.webp";
 
 const Slider = () => {
     const [slide, setSlide] = useState(slide1);

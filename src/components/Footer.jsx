@@ -4,10 +4,11 @@ import VerifiedUserIcon from "@mui/icons-material/VerifiedUser";
 import Link from "@mui/material/Link";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import YouTubeIcon from "@mui/icons-material/YouTube";
-import truackersmpicon from "../static/img/truckersmpicon.png";
 import { useDarkMode } from "../hooks/contex/DarkModeContex";
 
-import logo from "../static/img/logo.png";
+// icons
+import truackersmpicon from "../static/img/truckersmpicon.webp";
+import logo from "../static/img/logo.webp";
 import GitHubIcon from "@mui/icons-material/GitHub";
 
 const Footer = () => {

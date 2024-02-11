@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDarkMode } from "../hooks/contex/DarkModeContex";
 import { styled } from "@mui/material/styles";
-import logo from "../static/img/logo.png";
+import logo from "../static/img/logo.webp";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Button from "@mui/material/Button";

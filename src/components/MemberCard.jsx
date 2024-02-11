@@ -7,7 +7,7 @@ import Button from "@mui/material/Button";
 
 // icons
 import OpenInNewRoundedIcon from "@mui/icons-material/OpenInNewRounded";
-import defaultavatar from "../static/img/defaultavatar.png";
+import defaultavatar from "../static/img/defaultavatar.webp";
 
 import { REST_API_URL } from "../helpers/configs";
 
