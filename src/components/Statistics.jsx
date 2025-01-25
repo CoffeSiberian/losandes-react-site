@@ -158,7 +158,7 @@ const Statistics = () => {
     return (
         <div className="flex justify-center mb-10">
             <div
-                className={`flex flex-col justify-center ${themeTatailwind.secundary.main} rounded-lg shadow-sm w-full max-w-7xl gap-4 m-5 p-5`}
+                className={`flex flex-col justify-center ${themeTatailwind.secundary.main} rounded-lg shadow-xs w-full max-w-7xl gap-4 m-5 p-5`}
             >
                 <Typography
                     color={themeTatailwind.primary.color}

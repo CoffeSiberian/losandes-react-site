@@ -1,0 +1,31 @@
+@reference "tailwindcss/theme";
+
+.viewNew img {
+    @apply object-cover rounded-lg drop-shadow-lg;
+}
+
+.viewNew p:not(:has(img)) {
+    @apply flex flex-col;
+}
+
+.viewNew p:has(> img):first-child {
+    @apply flex flex-col justify-center;
+}
+
+.viewNew p:has(> a > img) {
+    @apply flex justify-center;
+}
+
+.viewNew a {
+    @apply text-blue-600;
+}
+
+.viewNew h1,
+.viewNew h2,
+.viewNew h3,
+.viewNew h4,
+.viewNew h5,
+.viewNew h6,
+.viewNew strong {
+    @apply pt-4 pb-4;
+}

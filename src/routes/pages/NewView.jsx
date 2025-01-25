@@ -15,7 +15,7 @@ import PersonRoundedIcon from "@mui/icons-material/PersonRounded";
 import { formatOnlyDate } from "../../helpers/formatdate";
 import Divider from "@mui/material/Divider";
 import ModalLoading from "../../components/ModalLoading";
-import "../../static/css/NewViewStyle.scss";
+import "../../static/css/NewViewStyle.css";
 import { TITLE, REST_API_URL } from "../../helpers/configs";
 
 const NewView = () => {

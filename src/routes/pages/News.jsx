@@ -173,7 +173,7 @@ const News = () => {
                                     handleChange(event, page)
                                 }
                                 variant="outlined"
-                                shape="rounded"
+                                shape="rounded-sm"
                             />
                         </Stack>
                     </div>
