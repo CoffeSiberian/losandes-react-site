@@ -11,6 +11,7 @@
         "@mui/lab": "6.0.0-beta.24",
         "@mui/material": "^6.4.1",
         "@mui/styled-engine-sc": "6.4.0",
+        "@tailwindcss/vite": "^4.0.0",
         "dayjs": "^1.11.13",
         "react": "^19.0.0",
         "react-dom": "^19.0.0",
