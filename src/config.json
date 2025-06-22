@@ -1,0 +1,110 @@
+{
+    "staff": [
+        {
+            "staff_id": 148830,
+            "staff_color": "#ff0000"
+        },
+        {
+            "staff_id": 156618,
+            "staff_color": "#ff1900"
+        },
+        {
+            "staff_id": 168871,
+            "staff_color": "#ff6400"
+        },
+        {
+            "staff_id": 175134,
+            "staff_color": "#ff6400"
+        },
+        {
+            "staff_id": 187615,
+            "staff_color": "#ff6400"
+        },
+        {
+            "staff_id": 175138,
+            "staff_color": "#ff6400"
+        },
+        {
+            "staff_id": 175081,
+            "staff_color": "#ff6400"
+        },
+        {
+            "staff_id": 175137,
+            "staff_color": "#ff6400"
+        },
+        {
+            "staff_id": 175136,
+            "staff_color": "#ff6400"
+        },
+        {
+            "staff_id": 155842,
+            "staff_color": "#ffaa00"
+        },
+        {
+            "staff_id": 148831,
+            "staff_color": "#ffaa00"
+        },
+        {
+            "staff_id": 157221,
+            "staff_color": "#ffaa00"
+        },
+        {
+            "staff_id": 157222,
+            "staff_color": "#ffaa00"
+        }
+    ],
+    "partners": [
+        {
+            "name": "Truck Convoy Control and Route",
+            "logo": "truck_convoy_control_and_route.png",
+            "link": "https://truckersmp.com/vtc/50578"
+        },
+        {
+            "name": "Nova Era Transportes",
+            "logo": "nova_era_transportes.png",
+            "link": "https://truckersmp.com/vtc/34966"
+        },
+        {
+            "name": "Logística Sudamericana",
+            "logo": "logistica_sudamericana.png",
+            "link": "https://truckersmp.com/vtc/56572"
+        },
+        {
+            "name": "Traileros Latinos",
+            "logo": "traileros_latinos.png",
+            "link": "https://truckersmp.com/vtc/65011"
+        },
+        {
+            "name": "ALLIANCE Virtual",
+            "logo": "alliance_virtual.png",
+            "link": "https://truckersmp.com/vtc/1271"
+        },
+        {
+            "name": "Global Express American",
+            "logo": "global_express_american.png",
+            "link": "https://truckersmp.com/vtc/71623"
+        },
+        {
+            "name": "Inter Shipeados Logística",
+            "logo": "inter_shipeados_logistica.png",
+            "link": "https://truckersmp.com/vtc/64312"
+        }
+    ],
+    "hall_of_fame": [
+        {
+            "rol_id": "1092446237866872942",
+            "featured": true,
+            "rol_name": "Andes fan"
+        },
+        {
+            "rol_id": "996521663359356990",
+            "featured": false,
+            "rol_name": "Cumpleaños"
+        },
+        {
+            "rol_id": "1003333556828897310",
+            "featured": false,
+            "rol_name": "Retired Staff"
+        }
+    ]
+}
