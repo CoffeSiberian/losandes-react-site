@@ -35,12 +35,13 @@ const EventModal = ({ title, description, image, handleClose, open }) => {
                             Expandir mapa
                         </Button>
                     </div>
-                    <ReactMarkdown
-                        className="viewNew"
-                        remarkPlugins={[remarkGfm, remarkBreaks]}
-                    >
-                        {description}
-                    </ReactMarkdown>
+                    <div className="viewNew">
+                        <ReactMarkdown
+                            remarkPlugins={[remarkGfm, remarkBreaks]}
+                        >
+                            {description}
+                        </ReactMarkdown>
+                    </div>
                 </DialogContent>
                 <DialogActions>
                     <Button color="error" onClick={handleClose}>

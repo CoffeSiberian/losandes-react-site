@@ -107,7 +107,7 @@ const EventCard = ({
                     </div>
                     <div className="flex">
                         <LocalShippingRoundedIcon className="mr-2" />
-                        <b className="mr-2">VTC's:</b> {atendenceVtc}
+                        <b className="mr-2">VTC&apos;s:</b> {atendenceVtc}
                     </div>
                 </Typography>
             </div>
